@@ -1,0 +1,334 @@
+*** Aelf Mainnet ***,,,,,,,,,,,Execution Layer,,,,Chain SSDB,,,,State SSDB,,,,Exporter,,,,,,,,,Total CPU (vCore),Total Memory (GB),Storage (TB)
+idc-ded-aelf-mainnet-aelf-full-upbit01,aelf-mainnet,Deployed,K8S,192.168.34.184,idc-chain-host-14,61.111.3.64,7.2,32.048,7.2,48.048,4,4,16,32,2,2,12,12,1,1,4,4,0.2,0.2,0.048,0.048,,,,,,8,33,1.6
+idc-int-aelf-mainnet-aelf-full-01,aelf-mainnet,Deployed,K8S,192.168.34.141,idc-chain-host-13,61.111.3.63,7.2,32.048,7.2,48.048,4,4,16,32,2,2,12,12,1,1,4,4,0.2,0.2,0.048,0.048,,,,,,8,33,1.6
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,16,66,3.2
+*** Aptos Mainnet ***,,,,,,,,,,,Execution Layer,,,,,,,,,,,,,,,,,,,,,,,
+idc-ded-apt-mainnet-aptos-archive-rewardywallet01,apt-mainnet,Deployed,K8S,192.168.34.185,idc-chain-host-04,61.111.3.54,16,76,16,76.1,16,16,76,76.1,,,,,,,,,,,,,,,,,,16,76,13
+idc-int-apt-mainnet-aptos-archive-01,apt-mainnet,Deployed,K8S,192.168.34.93,idc-chain-host-17,61.111.3.67,16,76,16,76.1,16,16,76,76.1,,,,,,,,,,,,,,,,,,16,76,13
+idc-svc-apt-mainnet-aptos-archive-01,apt-mainnet,Deployed,K8S,192.168.34.95,idc-chain-host-18,61.111.3.68,16,76,16,76.1,16,16,76,76.1,,,,,,,,,,,,,,,,,,16,76,13
+idc-svc-apt-mainnet-aptos-archive-02,apt-mainnet,Deployed,K8S,192.168.34.96,idc-chain-host-26,61.111.3.76,16,76,16,76.1,16,16,76,76.1,,,,,,,,,,,,,,,,,,16,76,13
+idc-val-apt-mainnet-aptos-archive-vfn,apt-mainnet,Deployed,EXT,,cherryservers-apt-vfn,185.191.118.139,16,64,16,64,16,16,64,64,,,,,,,,,,,,,,,,,,16,64,0.2
+idc-val-apt-mainnet-aptos-archive-validator,apt-mainnet,Deployed,EXT,,cherryservers-apt-validator,185.191.116.239,56,128,56,128,56,56,128,128,,,,,,,,,,,,,,,,,,56,128,0.2
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,136,496,52.4
+*** Aptos Testnet ***,,,,,,,,,,,Execution Layer,,,,,,,,,,,,,,,,,,,,,,,
+idc-int-apt-testnet-aptos-archive-01,apt-testnet,Deployed,K8S,192.168.34.97,idc-chain-host-31,61.111.3.81,24,128,24,128.1,24,24,128,128.1,,,,,,,,,,,,,,,,,,24,128,9.5
+idc-svc-apt-testnet-aptos-archive-01,apt-testnet,Deployed,K8S,192.168.34.99,idc-chain-host-13,61.111.3.63,24,128,24,128.1,24,24,128,128.1,,,,,,,,,,,,,,,,,,24,128,9.5
+idc-svc-apt-testnet-aptos-archive-02,apt-testnet,Deployed,K8S,192.168.34.100,idc-chain-host-27,61.111.3.77,24,128,24,128.1,24,24,128,128.1,,,,,,,,,,,,,,,,,,24,128,9.5
+idc-val-apt-testnet-aptos-archive-vfn,apt-testnet,Deployed,Server,,idc-chain-host-27,61.111.3.77,24,128,24,128,24,24,128,128,,,,,,,,,,,,,,,,,,24,128,0.2
+idc-val-apt-testnet-aptos-archive-validator,apt-testnet,Deployed,Server,,idc-chain-host-28,61.111.3.78,56,128,56,128,56,56,128,128,,,,,,,,,,,,,,,,,,56,128,0.2
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,152,640,28.9
+*** Arbitrum Mainnet ***,,,,,,,,,,,Execution Layer,,,,GethExporter,,,,,,,,,,,,,,,,,,,
+idc-ded-arb-mainnet-nitro-full-01keyinside,arb-mainnet,Deployed,K8S,192.168.34.104,idc-chain-host-31,61.111.3.81,8.2,128.048,8.2,128.058,8,8,128,128,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,9,129,5.8
+idc-ded-arb-mainnet-nitro-full-dkargo01,arb-mainnet,Deployed,K8S,192.168.34.205,idc-chain-host-07,61.111.3.57,8.2,128.048,8.2,128.058,8,8,128,128,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,9,129,5.8
+idc-ded-arb-mainnet-nitro-full-dkargo02,arb-mainnet,Deployed,K8S,192.168.34.206,idc-chain-host-14,61.111.3.64,8.2,64.048,8.2,64.058,8,8,64,64,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,9,65,5.8
+idc-int-arb-mainnet-nitro-arch-01,arb-mainnet,Deployed,K8S,192.168.34.101,idc-chain-host-05,61.111.3.55,8.2,32.048,8.2,32.058,8,8,32,32,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,9,33,34
+idc-int-arb-mainnet-nitro-arch-02,arb-mainnet,Deployed,K8S,192.168.34.102,idc-chain-host-20,61.111.3.70,8.2,32.048,8.2,32.058,8,8,32,32,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,,,
+idc-int-arb-mainnet-nitro-full-01,arb-mainnet,Deployed,K8S,192.168.34.103,idc-chain-host-26,61.111.3.76,4.2,32.048,4.2,32.058,4,4,32,32,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,5,33,5.8
+idc-int-arb-mainnet-nitro-relay-01,arb-mainnet,Deployed,K8S,192.168.34.110,idc-chain-host-06,61.111.3.56,0.4,0.448,0.4,0.458,0.2,0.2,0.4,0.4,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,1,1,5.8
+idc-svc-arb-mainnet-nitro-arch-01,arb-mainnet,Deployed,K8S,192.168.34.105,idc-chain-host-18,61.111.3.68,8.2,32.048,8.2,32.058,8,8,32,32,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,9,33,34
+idc-svc-arb-mainnet-nitro-arch-02,arb-mainnet,Deployed,K8S,192.168.34.106,idc-chain-host-04,61.111.3.54,24.2,64.048,24.2,64.058,24,24,64,64,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,25,65,34
+idc-svc-arb-mainnet-nitro-full-01,arb-mainnet,Deployed,K8S,192.168.34.107,idc-chain-host-28,61.111.3.78,4.2,32.048,4.2,32.058,4,4,32,32,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,5,33,5.8
+idc-svc-arb-mainnet-nitro-full-02,arb-mainnet,Deployed,K8S,192.168.34.108,idc-chain-host-12,61.111.3.62,4.2,32.048,4.2,32.058,4,4,32,32,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,5,33,5.8
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,86,554,142.6
+*** Arbitrum Sepolia ***,,,,,,,,,,,Execution Layer,,,,GethExporter,,,,,,,,,,,,,,,,,,,
+idc-ded-arb-sepolia-nitro-full-01dkargo,arb-sepolia,Deployed,K8S,192.168.34.166,idc-chain-host-27,61.111.3.77,4.2,64.048,4.2,64.058,4,4,64,64,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,5,65,2.1
+idc-ded-arb-sepolia-nitro-full-01keyinside,arb-sepolia,Deployed,K8S,192.168.34.112,idc-chain-host-28,61.111.3.78,4.2,24.048,4.2,24.058,4,4,24,24,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,5,25,2.1
+idc-int-arb-sepolia-nitro-arch-01,arb-sepolia,Deployed,K8S,192.168.34.109,idc-chain-host-05,61.111.3.55,8.2,32.048,8.2,32.058,8,8,32,32,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,9,33,17
+idc-int-arb-sepolia-nitro-full-01,arb-sepolia,Deployed,K8S,192.168.34.111,idc-chain-host-20,61.111.3.70,4.2,24.048,4.2,24.058,4,4,24,24,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,5,25,2.1
+idc-svc-arb-sepolia-nitro-arch-01,arb-sepolia,Deployed,K8S,192.168.34.113,idc-chain-host-18,61.111.3.68,8.2,32.048,8.2,32.058,8,8,32,32,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,9,33,17
+idc-svc-arb-sepolia-nitro-arch-02,arb-sepolia,Deployed,K8S,192.168.34.114,idc-chain-host-04,61.111.3.54,8.2,32.048,8.2,32.058,8,8,32,32,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,9,33,17
+idc-svc-arb-sepolia-nitro-full-01,arb-sepolia,Deployed,K8S,192.168.34.115,idc-chain-host-31,61.111.3.81,4.2,24.048,4.2,24.058,4,4,24,24,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,5,25,2.1
+idc-svc-arb-sepolia-nitro-full-02,arb-sepolia,Deployed,K8S,192.168.34.116,idc-chain-host-13,61.111.3.63,4.2,24.048,4.2,24.058,4,4,24,24,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,5,25,2.1
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,52,264,61.5
+*** Arc Testnet ***,,,,,,,,,,,Execution Layer,,,,Consensus Layer,,,,GethExporter,,,,,,,,,,,,,,,
+idc-int-arc-testnet-arc-arch-01,arc-testnet,Deployed,K8S,192.168.34.25,idc-chain-host-11,61.111.3.61,8.2,32.096,8.2,32.096,5,5,24,24,3,3,8,8,0.2,0.2,0.096,0.096,,,,,,,,,,,,
+idc-int-arc-testnet-arc-full-01,arc-testnet,Deployed,K8S,192.168.34.44,idc-chain-host-10,61.111.3.60,8.2,32.096,8.2,32.096,5,5,24,24,3,3,8,8,0.2,0.2,0.096,0.096,,,,,,,,,,,,
+idc-svc-arc-testnet-arc-arch-01,arc-testnet,Deployed,K8S,192.168.34.36,idc-chain-host-25,61.111.3.75,8.2,32.096,8.2,32.096,5,5,24,24,3,3,8,8,0.2,0.2,0.096,0.096,,,,,,,,,,,,
+idc-svc-arc-testnet-arc-arch-02,arc-testnet,Deployed,K8S,192.168.34.38,idc-chain-host-26,61.111.3.76,8.2,32.096,8.2,32.096,5,5,24,24,3,3,8,8,0.2,0.2,0.096,0.096,,,,,,,,,,,,
+idc-svc-arc-testnet-arc-full-01,arc-testnet,Deployed,K8S,192.168.34.52,idc-chain-host-05,61.111.3.55,8.2,32.096,8.2,32.096,5,5,24,24,3,3,8,8,0.2,0.2,0.096,0.096,,,,,,,,,,,,
+idc-svc-arc-testnet-arc-full-02,arc-testnet,Deployed,K8S,192.168.34.54,idc-chain-host-31,61.111.3.81,8.2,32.096,8.2,32.096,5,5,24,24,3,3,8,8,0.2,0.2,0.096,0.096,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*** Avax Fuji ***,,,,,,,,,,,Execution Layer,,,,,,,,,,,,,,,,,,,,,,,
+idc-int-avax-fuji-avax-arch-01,avax-fuji,Deployed,K8S,192.168.34.156,idc-chain-host-14,61.111.3.64,8,16,8,16.1,8,8,16,16.1,,,,,,,,,,,,,,,,,,8,16,1.9
+idc-int-avax-fuji-avax-full-01,avax-fuji,Deployed,K8S,192.168.34.152,idc-chain-host-17,61.111.3.67,8,16,8,16.1,8,8,16,16.1,,,,,,,,,,,,,,,,,,8,16,0.2
+idc-svc-avax-fuji-avax-arch-01,avax-fuji,Deployed,K8S,192.168.34.158,idc-chain-host-07,61.111.3.57,8,16,8,16.1,8,8,16,16.1,,,,,,,,,,,,,,,,,,8,16,1.9
+idc-svc-avax-fuji-avax-arch-02,avax-fuji,Deployed,K8S,192.168.34.159,idc-chain-host-04,61.111.3.54,8,16,8,16.1,8,8,16,16.1,,,,,,,,,,,,,,,,,,8,16,1.9
+idc-svc-avax-fuji-avax-full-01,avax-fuji,Deployed,K8S,192.168.34.154,idc-chain-host-28,61.111.3.78,8,16,8,16.1,8,8,16,16.1,,,,,,,,,,,,,,,,,,8,16,0.2
+idc-svc-avax-fuji-avax-full-02,avax-fuji,Deployed,K8S,192.168.34.155,idc-chain-host-11,61.111.3.61,8,16,8,16.1,8,8,16,16.1,,,,,,,,,,,,,,,,,,8,16,0.2
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,48,96,6.3
+*** Avax Mainnet ***,,,,,,,,,,,Execution Layer,,,,,,,,,,,,,,,,,,,,,,,
+idc-int-avax-mainnet-avax-arch-01,avax-mainnet,Deployed,K8S,192.168.34.150,idc-chain-host-31,61.111.3.81,8,16,8,16.1,8,8,16,16.1,,,,,,,,,,,,,,,,,,8,16,13
+idc-int-avax-mainnet-avax-full-01,avax-mainnet,Deployed,K8S,192.168.34.144,idc-chain-host-18,61.111.3.68,8,16,8,16.1,8,8,16,16.1,,,,,,,,,,,,,,,,,,8,16,1.3
+idc-svc-avax-mainnet-avax-arch-01,avax-mainnet,Deployed,K8S,192.168.34.162,idc-chain-host-07,61.111.3.57,8,16,8,16.1,8,8,16,16.1,,,,,,,,,,,,,,,,,,8,16,13
+idc-svc-avax-mainnet-avax-arch-02,avax-mainnet,Deployed,K8S,192.168.34.163,idc-chain-host-19,61.111.3.69,8,16,8,16.1,8,8,16,16.1,,,,,,,,,,,,,,,,,,8,16,13
+idc-svc-avax-mainnet-avax-full-01,avax-mainnet,Deployed,K8S,192.168.34.148,idc-chain-host-05,61.111.3.55,8,16,8,16.1,8,8,16,16.1,,,,,,,,,,,,,,,,,,8,16,1.3
+idc-svc-avax-mainnet-avax-full-02,avax-mainnet,Deployed,K8S,192.168.34.149,idc-chain-host-04,61.111.3.54,8,16,8,16.1,8,8,16,16.1,,,,,,,,,,,,,,,,,,8,16,1.3
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,48,96,42.9
+*** Base Mainnet ***,,,,,,,,,,,Execution Layer,,,,Consensus Layer,,,,GethExporter,,,,,,,,,,,,,,,
+idc-int-base-mainnet-geth-full-01,base-mainnet,Deployed,K8S,192.168.34.119,idc-chain-host-21,61.111.3.71,16.2,74.048,16.2,210.058,12,12,64,200,4,4,10,10,0.2,0.2,0.048,0.058,,,,,,,,,,17,75,3.7
+idc-int-base-mainnet-reth-full-02,base-mainnet,Deployed,K8S,192.168.34.120,idc-chain-host-29,61.111.3.79,16.2,74.048,16.2,210.058,12,12,64,200,4,4,10,10,0.2,0.2,0.048,0.058,,,,,,,,,,17,75,3
+idc-int-base-mainnet-reth-arch-01,base-mainnet,Deployed,K8S,192.168.34.160,idc-chain-host-06,61.111.3.56,12.2,42.048,12.2,260.058,8,8,32,250,4,4,10,10,0.2,0.2,0.048,0.058,,,,,,,,,,13,43,8
+idc-int-base-mainnet-geth-arch-02 (PBSS),base-mainnet,Deployed,K8S,192.168.34.22,idc-chain-host-22,61.111.3.72,12.2,42.048,12.2,260.058,8,8,32,250,4,4,10,10,0.2,0.2,0.048,0.058,,,,,,,,,,13,43,2.3
+idc-svc-base-mainnet-geth-full-01,base-mainnet,Deployed,K8S,192.168.34.124,idc-chain-host-10,61.111.3.60,16.2,74.048,16.2,210.058,12,12,64,200,4,4,10,10,0.2,0.2,0.048,0.058,,,,,,,,,,17,75,3.7
+idc-svc-base-mainnet-geth-full-02,base-mainnet,Deployed,K8S,192.168.34.125,idc-chain-host-07,61.111.3.57,16.2,74.048,16.2,210.058,12,12,64,200,4,4,10,10,0.2,0.2,0.048,0.058,,,,,,,,,,17,75,3.7
+idc-svc-base-mainnet-reth-arch-01,base-mainnet,Deployed,K8S,192.168.34.190,idc-chain-host-19,61.111.3.69,12.2,42.048,12.2,260.058,8,8,32,250,4,4,10,10,0.2,0.2,0.048,0.058,,,,,,,,,,13,43,8
+idc-svc-base-mainnet-reth-arch-02,base-mainnet,Deployed,K8S,192.168.34.215,idc-chain-host-25,61.111.3.75,12.2,42.048,12.2,260.058,8,8,32,250,4,4,10,10,0.2,0.2,0.048,0.058,,,,,,,,,,13,43,8
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,120,472,40.4
+*** Base Sepolia ***,,,,,,,,,,,Execution Layer,,,,Consensus Layer,,,,GethExporter,,,,,,,,,,,,,,,
+idc-int-base-sepolia-geth-arch-01,base-sepolia,Deployed,K8S,192.168.34.126,idc-chain-host-27,61.111.3.77,12.2,42.048,12.2,42.058,8,8,32,32,4,4,10,10,0.2,0.2,0.048,0.058,,,,,,,,,,13,43,10.3
+idc-int-base-sepolia-geth-arch-02 (PBSS),base-sepolia,Deployed,K8S,192.168.34.127,idc-chain-host-10,61.111.3.60,12.2,42.048,12.2,42.058,8,8,32,32,4,4,10,10,0.2,0.2,0.048,0.058,,,,,,,,,,13,43,1
+idc-int-base-sepolia-geth-full-01,base-sepolia,Deployed,K8S,192.168.34.128,idc-chain-host-17,61.111.3.67,12.2,26.048,12.2,26.058,8,8,16,16,4,4,10,10,0.2,0.2,0.048,0.058,,,,,,,,,,13,27,0.9
+idc-svc-base-sepolia-geth-arch-01,base-sepolia,Deployed,K8S,192.168.34.130,idc-chain-host-24,61.111.3.74,12.2,42.048,12.2,42.058,8,8,32,32,4,4,10,10,0.2,0.2,0.048,0.058,,,,,,,,,,13,43,10.3
+idc-svc-base-sepolia-geth-arch-02,base-sepolia,Deployed,K8S,192.168.34.131,idc-chain-host-29,61.111.3.79,12.2,42.048,12.2,42.058,8,8,32,32,4,4,10,10,0.2,0.2,0.048,0.058,,,,,,,,,,13,43,10.3
+idc-svc-base-sepolia-geth-full-01,base-sepolia,Deployed,K8S,192.168.34.132,idc-chain-host-31,61.111.3.81,12.2,26.048,12.2,26.058,8,8,16,16,4,4,10,10,0.2,0.2,0.048,0.058,,,,,,,,,,13,27,0.9
+idc-svc-base-sepolia-geth-full-02,base-sepolia,Deployed,K8S,192.168.34.133,idc-chain-host-12,61.111.3.62,12.2,26.048,12.2,26.058,8,8,16,16,4,4,10,10,0.2,0.2,0.048,0.058,,,,,,,,,,13,27,0.9
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,91,253,34.6
+*** Bitcoin Cash Mainnet ***,,,,,,,,,,,Execution Layer,,,,BitcoinExporter,,,,,,,,,,,,,,,,,,,
+idc-int-bch-mainnet-bch-arch-01,bch-mainnet,Deployed,K8S,192.168.34.216,idc-chain-host-16,61.111.3.66,4.2,48.048,4.2,48.148,4,4,48,48.1,0.2,0.2,0.048,0.048,,,,,,,,,,,,,,5,49,0.3
+idc-int-bch-mainnet-bch-arch-02,bch-mainnet,Deployed,K8S,192.168.34.217,idc-chain-host-25,61.111.3.75,4.2,48.048,4.2,48.148,4,4,48,48.1,0.2,0.2,0.048,0.048,,,,,,,,,,,,,,5,49,0.3
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,10,98,0.6
+*** BNB Mainnet ***,,,,,,,,,,,Execution Layer,,,,GethExporter,,,,,,,,,,,,,,,,,,,
+idc-int-bnb-mainnet-erigon-arch-01,bnb-mainnet,Deployed,K8S,192.168.34.226,idc-chain-host-23,61.111.3.73,16.2,64.048,16.2,300.058,16,16,64,300,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,17,65,7.2
+idc-int-bnb-mainnet-geth-full-01,bnb-mainnet,Deployed,K8S,192.168.34.164,idc-chain-host-11,61.111.3.61,16.2,64.048,16.2,64.058,16,16,64,64,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,17,65,4.6
+idc-svc-bnb-mainnet-erigon-arch-01,bnb-mainnet,Deployed,K8S,192.168.34.98,idc-chain-host-24,61.111.3.74,16.2,64.048,16.2,300.058,16,16,64,300,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,17,65,7.2
+idc-svc-bnb-mainnet-erigon-arch-02,bnb-mainnet,Deployed,K8S,192.168.34.129,idc-chain-host-21,61.111.3.71,16.2,64.048,16.2,300.058,16,16,64,300,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,17,65,7.2
+idc-svc-bnb-mainnet-geth-full-01,bnb-mainnet,Deployed,K8S,192.168.34.193,idc-chain-host-25,61.111.3.75,16.2,64.048,16.2,64.058,16,16,64,64,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,17,65,4.6
+idc-svc-bnb-mainnet-geth-full-02,bnb-mainnet,Deployed,K8S,192.168.34.194,idc-chain-host-28,61.111.3.78,16.2,64.048,16.2,64.058,16,16,64,64,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,17,65,4.6
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,102,390,35.4
+*** BNB Testnet ***,,,,,,,,,,,Execution Layer,,,,GethExporter,,,,,,,,,,,,,,,,,,,
+idc-int-bnb-testnet-erigon-arch-01,bnb-testnet,Deployed,K8S,192.168.34.80,idc-chain-host-11,61.111.3.61,16.2,64.048,16.2,150.058,16,16,64,150,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,17,65,0.6
+idc-int-bnb-testnet-geth-arch-02 (PBSS),bnb-testnet,Deployed,K8S,192.168.34.189,idc-chain-host-29,61.111.3.79,16.2,64.048,16.2,150.058,16,16,64,150,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,17,65,0.5
+idc-int-bnb-testnet-geth-full-01,bnb-testnet,Deployed,K8S,192.168.34.165,idc-chain-host-26,61.111.3.76,16.2,64.048,16.2,64.058,16,16,64,64,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,17,65,0.5
+idc-svc-bnb-testnet-erigon-arch-01,bnb-testnet,Deployed,K8S,192.168.34.196,idc-chain-host-20,61.111.3.70,16.2,64.048,16.2,150.058,16,16,64,150,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,17,65,0.6
+idc-svc-bnb-testnet-erigon-arch-02,bnb-testnet,Deployed,K8S,192.168.34.195,idc-chain-host-22,61.111.3.72,16.2,64.048,16.2,150.058,16,16,64,150,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,17,65,0.6
+idc-svc-bnb-testnet-geth-full-01,bnb-testnet,Deployed,K8S,192.168.34.198,idc-chain-host-27,61.111.3.77,16.2,64.048,16.2,64.058,16,16,64,64,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,17,65,0.5
+idc-svc-bnb-testnet-geth-full-02,bnb-testnet,Deployed,K8S,192.168.34.197,idc-chain-host-16,61.111.3.66,16.2,64.048,16.2,64.058,16,16,64,64,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,17,65,0.5
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,119,455,3.8
+*** BTC Mainnet ***,,,,,,,,,,,Execution Layer,,,,BitcoinExporter,,,,,,,,,,,,,,,,,,,
+idc-ded-btc-mainnet-bitcoind-arch-upbit01,btc-mainnet,Deployed,K8S,192.168.34.139,idc-chain-host-07,61.111.3.57,2.2,16.048,2.2,16.158,2,2,16,16.1,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,3,17,0.9
+idc-int-btc-mainnet-bitcoind-arch-01,btc-mainnet,Deployed,K8S,192.168.34.134,idc-chain-host-18,61.111.3.68,4.2,48.048,4.2,48.158,4,4,48,48.1,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,5,49,0.9
+idc-int-btc-mainnet-bitcoind-arch-02,btc-mainnet,Deployed,K8S,192.168.34.135,idc-chain-host-11,61.111.3.61,4.2,48.048,4.2,48.158,4,4,48,48.1,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,5,49,0.9
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,13,115,2.7
+*** Canton Devnet ***,,,,,,,,,,,Execution Layer,,,,Postgres,,,,Participant,,,,ANS Web UI,,,,Postgres,,,,,,,
+idc-val-cc-devnet-splice-full-validator,cc-devnet,Deployed,Server,192.168.33.51,idc-chain-host-06,61.111.3.56,10,55,10,55,3,3,8,8,4,4,12,12,1,1,32,32,1,1,1.5,1.5,1,1,1.5,1.5,,10,55,0.1
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*** Canton Mainnet ***,,,,,,,,,,,Execution Layer,,,,Postgres,,,,Participant,,,,ANS Web UI,,,,Postgres,,,,,,,
+idc-val-cc-devnet-splice-full-validator,cc-devnet,Will Deploy,Server,192.168.33.50,idc-chain-host-15,61.111.3.65,10,55,10,55,3,3,8,8,4,4,12,12,1,1,32,32,1,1,1.5,1.5,1,1,1.5,1.5,,10,55,0.1
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*** CHZ Mainnet ***,,,,,,,,,,,Execution Layer,,,,GethExporter,,,,,,,,,,,,,,,,,,,
+idc-int-chz-mainnet-geth-arch-01,chz-mainnet,Deployed,K8S,192.168.34.169,idc-chain-host-04,61.111.3.54,2.2,8.048,2.2,8.048,2,2,8,8,0.2,0.2,0.048,0.048,,,,,,,,,,,,,,3,9,0.5
+idc-int-chz-mainnet-geth-arch-02,chz-mainnet,Deployed,K8S,192.168.34.170,idc-chain-host-26,61.111.3.76,2.2,8.048,2.2,8.048,2,2,8,8,0.2,0.2,0.048,0.048,,,,,,,,,,,,,,3,9,0.5
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,6,18,1
+*** Doge Mainnet ***,,,,,,,,,,,Execution Layer,,,,BitcoinExporter,,,,,,,,,,,,,,,,,,,
+idc-int-doge-mainnet-doged-arch-01,doge-mainnet,Deployed,K8S,192.168.34.136,idc-chain-host-13,61.111.3.63,4.2,36.048,4.2,36.158,4,4,36,36.1,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,5,37,0.2
+idc-int-doge-mainnet-doged-arch-02,doge-mainnet,Deployed,K8S,192.168.34.137,idc-chain-host-11,61.111.3.61,4.2,36.048,4.2,36.158,4,4,36,36.1,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,5,37,0.2
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,10,74,0.4
+*** Ethereum Hoodi ***,,,,,,,,,,,Execution Layer,,,,Consensus Layer,,,,GethExporter,,,,Validator,,,,,,,,,,,
+idc-int-eth-hoodi-geth-full-01,eth-hoodi,Deployed,K8S,192.168.34.173,idc-chain-host-18,61.111.3.68,7.2,40.048,7.2,40,4,4,16,16,3,3,24,24,0.2,0.2,0.048,,,,,,,,,,,8,41,0.5
+idc-int-eth-hoodi-reth-arch-01,eth-hoodi,Deployed,K8S,192.168.34.172,idc-chain-host-20,61.111.3.70,7.2,40.048,7.2,40,4,4,16,16,3,3,24,24,0.2,0.2,0.048,,,,,,,,,,,8,41,0.6
+idc-svc-eth-hoodi-geth-full-01,eth-hoodi,Deployed,K8S,192.168.34.175,idc-chain-host-14,61.111.3.64,7.2,40.048,7.2,40,4,4,16,16,3,3,24,24,0.2,0.2,0.048,,,,,,,,,,,8,41,0.5
+idc-svc-eth-hoodi-geth-full-02,eth-hoodi,Deployed,K8S,192.168.34.26,idc-chain-host-10,61.111.3.60,7.2,40.048,7.2,40,4,4,16,16,3,3,24,24,0.2,0.2,0.048,,,,,,,,,,,8,41,0.5
+idc-svc-eth-hoodi-reth-arch-01,eth-hoodi,Deployed,K8S,192.168.34.174,idc-chain-host-26,61.111.3.76,7.2,40.048,7.2,40,4,4,16,16,3,3,24,24,0.2,0.2,0.048,,,,,,,,,,,8,41,0.6
+idc-svc-eth-hoodi-reth-arch-02,eth-hoodi,Deployed,K8S,192.168.34.24,idc-chain-host-15,61.111.3.65,7.2,40.048,7.2,40,4,4,16,16,3,3,24,24,0.2,0.2,0.048,,,,,,,,,,,8,41,0.6
+idc-val-eth-hoodi-ssv-validator-01,eth-hoodi,Deployed,K8S,192.168.34.218,idc-chain-host-15,61.111.3.65,2,2,2,2,,,,,,,,,,,,,2,2,2,2,,,,,,2,2,0.01
+idc-val-eth-hoodi-ssv-validator-02,eth-hoodi,Deployed,K8S,192.168.34.219,idc-chain-host-11,61.111.3.61,2,2,2,2,,,,,,,,,,,,,2,2,2,2,,,,,,2,2,0.01
+idc-val-eth-hoodi-ssv-validator-03,eth-hoodi,Deployed,K8S,192.168.34.220,idc-chain-host-12,61.111.3.62,2,2,2,2,,,,,,,,,,,,,2,2,2,2,,,,,,2,2,0.01
+idc-val-eth-hoodi-ssv-validator-04,eth-hoodi,Deployed,K8S,192.168.34.221,idc-chain-host-13,61.111.3.63,2,2,2,2,,,,,,,,,,,,,2,2,2,2,,,,,,2,2,0.01
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,56,254,3.34
+*** Ethereum Mainnet ***,,,,,,,,,,,Execution Layer,,,,Consensus Layer,,,,GethExporter,,,,,,,,,,,,,,,
+idc-ded-eth-mainnet-geth-full-upbit01,eth-mainnet,Deployed,K8S,192.168.34.140,idc-chain-host-14,61.111.3.64,16.2,128.1,16.2,128.2,8,8,64,64,8,8,64,64,0.2,0.2,0.1,0.2,,,,,,,,,,17,129,3.6
+idc-ded-eth-mainnet-geth-full-upbit03 (백업),eth-mainnet,Deployed,K8S,192.168.34.208,idc-chain-host-25,61.111.3.75,16.2,128.1,16.2,128.2,8,8,64,64,8,8,64,64,0.2,0.2,0.1,0.2,,,,,,,,,,17,129,3.6
+idc-int-eth-mainnet-geth-full-01,eth-mainnet,Deployed,K8S,192.168.34.29,idc-chain-host-27,61.111.3.77,14.2,64.1,14.2,64.2,8,8,32,32,6,6,32,32,0.2,0.2,0.1,0.2,,,,,,,,,,15,65,3.5
+idc-int-eth-mainnet-geth-full-02,eth-mainnet,Deployed,K8S,192.168.34.30,idc-chain-host-18,61.111.3.68,14.2,64.1,14.2,64.2,8,8,32,32,6,6,32,32,0.2,0.2,0.1,0.2,,,,,,,,,,15,65,3.5
+idc-int-eth-mainnet-reth-arch-01,eth-mainnet,Deployed,K8S,192.168.34.27,idc-chain-host-28,61.111.3.78,14.2,80.1,14.2,80.2,8,8,48,48,6,6,32,32,0.2,0.2,0.1,0.2,,,,,,,,,,15,81,5
+idc-int-eth-mainnet-geth-arch-03 (PBSS),eth-mainnet,Deployed,K8S,192.168.34.23,idc-chain-host-05,61.111.3.55,14.2,80.1,14.2,80.2,8,8,48,48,6,6,32,32,0.2,0.2,0.1,0.2,,,,,,,,,,15,81,2.2
+idc-svc-eth-mainnet-geth-full-01,eth-mainnet,Deployed,K8S,192.168.34.33,idc-chain-host-12,61.111.3.62,14.2,64.1,14.2,64.2,8,8,32,32,6,6,32,32,0.2,0.2,0.1,0.2,,,,,,,,,,15,65,3.5
+idc-svc-eth-mainnet-geth-full-02,eth-mainnet,Deployed,K8S,192.168.34.34,idc-chain-host-07,61.111.3.57,14.2,64.1,14.2,64.2,8,8,32,32,6,6,32,32,0.2,0.2,0.1,0.2,,,,,,,,,,15,65,3.5
+idc-svc-eth-mainnet-reth-arch-01,eth-mainnet,Deployed,K8S,192.168.34.31,idc-chain-host-06,61.111.3.56,14.2,80.1,14.2,80.2,8,8,48,48,6,6,32,32,0.2,0.2,0.1,0.2,,,,,,,,,,15,81,5
+idc-svc-eth-mainnet-reth-arch-02,eth-mainnet,Deployed,K8S,192.168.34.32,idc-chain-host-13,61.111.3.63,14.2,80.1,14.2,80.2,8,8,48,48,6,6,32,32,0.2,0.2,0.1,0.2,,,,,,,,,,15,81,5
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,154,842,38.4
+*** Ethereum Sepolia ***,,,,,,,,,,,Execution Layer,,,,Consensus Layer,,,,GethExporter,,,,,,,,,,,,,,,
+idc-int-eth-sepolia-geth-arch-03 (PBSS),eth-sepolia,Deployed,K8S,192.168.34.89,idc-chain-host-05,61.111.3.55,8.2,64.096,8.2,64.096,4,4,48,48,4,4,16,16,0.2,0.2,0.096,0.096,,,,,,,,,,9,65,2.4
+idc-int-eth-sepolia-geth-full-01,eth-sepolia,Deployed,K8S,192.168.34.37,idc-chain-host-18,61.111.3.68,8.2,32.096,8.2,32.096,4,4,16,16,4,4,16,16,0.2,0.2,0.096,0.096,,,,,,,,,,9,33,2.9
+idc-int-eth-sepolia-reth-arch-01,eth-sepolia,Deployed,K8S,192.168.34.35,idc-chain-host-13,61.111.3.63,8.2,64.096,8.2,64.096,4,4,48,48,4,4,16,16,0.2,0.2,0.096,0.096,,,,,,,,,,9,65,3.4
+idc-svc-eth-sepolia-geth-full-01,eth-sepolia,Deployed,K8S,192.168.34.41,idc-chain-host-10,61.111.3.60,8.2,32.096,8.2,32.096,4,4,16,16,4,4,16,16,0.2,0.2,0.096,0.096,,,,,,,,,,9,33,2.9
+idc-svc-eth-sepolia-geth-full-02,eth-sepolia,Deployed,K8S,192.168.34.42,idc-chain-host-14,61.111.3.64,8.2,32.096,8.2,32.096,4,4,16,16,4,4,16,16,0.2,0.2,0.096,0.096,,,,,,,,,,9,33,2.9
+idc-svc-eth-sepolia-reth-arch-01,eth-sepolia,Deployed,K8S,192.168.34.39,idc-chain-host-26,61.111.3.76,8.2,64.096,8.2,64.096,4,4,48,48,4,4,16,16,0.2,0.2,0.096,0.096,,,,,,,,,,9,65,3.4
+idc-svc-eth-sepolia-reth-arch-02,eth-sepolia,Deployed,K8S,192.168.34.40,idc-chain-host-29,61.111.3.79,8.2,64.096,8.2,64.096,4,4,48,48,4,4,16,16,0.2,0.2,0.096,0.096,,,,,,,,,,9,65,3.4
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,63,359,21.3
+*** Ethereum Classic Mainnet ***,,,,,,,,,,,Execution Layer,,,,,,,,,,,,,,,,,,,,,,,
+idc-int-etc-mainnet-coregeth-arch-01,etc-mainnet,Deployed,K8S,192.168.34.20,idc-chain-host-29,61.111.3.79,4.2,8.1,4,8,4,4,8,8,,,,,0.2,,0.1,,,,,,,,,,,5,9,0.9
+idc-int-etc-mainnet-coregeth-arch-02,etc-mainnet,Deployed,K8S,192.168.34.21,idc-chain-host-25,61.111.3.75,4.2,8.1,4,8,4,4,8,8,,,,,0.2,,0.1,,,,,,,,,,,5,9,0.9
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,10,18,1.8
+*** Filecoin Mainnet ***,,,,,,,,,,,Execution Layer,,,,,,,,,,,,,,,,,,,,,,,
+idc-ded-fil-mainnet-lotus-full-upbit01,fil-mainnet,Deployed,K8S,192.168.34.180,idc-chain-host-23,61.111.3.73,48,96,48,96,48,48,96,96,,,,,,,,,,,,,,,,,,48,96,9.4
+idc-int-fil-mainnet-lotus-full-01,fil-mainnet,Deployed,K8S,192.168.34.117,idc-chain-host-24,61.111.3.74,8,32,8,96,8,8,32,96,,,,,,,,,,,,,,,,,,8,32,9.4
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,56,128,18.8
+*** Flow Mainnet ***,,,,,,,,,,,Execution Layer,,,,,,,,,,,,,,,,,,,,,,,
+idc-ded-flow-mainnet-flow-full-upbit01,flow-mainnet,Deployed,K8S,192.168.34.179,idc-chain-host-23,61.111.3.73,24,64,24,64,24,24,64,64,,,,,,,,,,,,,,,,,,24,64,0.1
+idc-int-flow-mainnet-flow-full-01,flow-mainnet,Deployed,K8S,192.168.34.186,idc-chain-host-24,61.111.3.74,24,64,24,64,24,24,64,64,,,,,,,,,,,,,,,,,,24,64,0.1
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,48,128,0.2
+*** Giwa Sepolia ***,,,,,,,,,,,Execution Layer,,,,Consensus Layer,,,,GethExporter,,,,,,,,,,,,,,,
+idc-int-giwa-sepolia-geth-arch-01,giwa-sepolia,Deployed,K8S,192.168.34.201,idc-chain-host-28,61.111.3.78,10.2,40.0,10.2,40.048,8,8,32,32,2,2,8,8,0.2,0.2,0.048,0.048,,,,,,,,,,11,41,0.5
+idc-int-giwa-sepolia-geth-full-01,giwa-sepolia,Deployed,K8S,192.168.34.200,idc-chain-host-29,61.111.3.79,10.2,24.048,10.2,24.048,8,8,16,16,2,2,8,8,0.2,0.2,0.048,0.048,,,,,,,,,,11,25,0.1
+idc-int-giwa-sepolia-reth-arch-01,giwa-sepolia,Deployed,K8S,192.168.34.231,idc-chain-host-19,61.111.3.69,10.2,24.0,10.2,72.048,8,8,16,64,2,2,8,8,0.2,0.2,0.048,0.048,,,,,,,,,,,,
+idc-int-giwa-sepolia-reth-full-01,giwa-sepolia,Deployed,K8S,192.168.34.204,idc-chain-host-22,61.111.3.72,10.2,24.048,10.2,24.048,8,8,16,16,2,2,8,8,0.2,0.2,0.048,0.048,,,,,,,,,,11,25,0.1
+idc-svc-giwa-sepolia-reth-arch-01,giwa-sepolia,Deployed,K8S,192.168.34.233,idc-chain-host-05,61.111.3.55,10.2,40.0,10.2,40.048,8,8,32,32,2,2,8,8,0.2,0.2,0.048,0.048,,,,,,,,,,,,
+idc-svc-giwa-sepolia-reth-arch-02,giwa-sepolia,Deployed,K8S,192.168.34.202,idc-chain-host-27,61.111.3.77,10.2,40.0,10.2,40.048,8,8,32,32,2,2,8,8,0.2,0.2,0.048,0.048,,,,,,,,,,11,41,0.5
+idc-svc-giwa-sepolia-reth-full-01,giwa-sepolia,Deployed,K8S,192.168.34.232,idc-chain-host-04,61.111.3.54,10.2,24.048,10.2,24.048,8,8,16,16,2,2,8,8,0.2,0.2,0.048,0.048,,,,,,,,,,,,
+idc-svc-giwa-sepolia-reth-full-02,giwa-sepolia,Deployed,K8S,192.168.34.211,idc-chain-host-14,61.111.3.64,10.2,24.048,10.2,24.048,8,8,16,16,2,2,8,8,0.2,0.2,0.048,0.048,,,,,,,,,,11,25,0.1
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,55,157,1.3
+*** Kaia Kairos ***,,,,,,,,,,,Execution Layer,,,,GethExporter,,,,,,,,,,,,,,,,,,,
+idc-int-kaia-kairos-ken-arch-01,kaia-kairos,Deployed,K8S,192.168.34.43,idc-chain-host-22,61.111.3.72,12.2,64.048,12.2,64.158,12,12,64,64.1,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,13,65,4.9
+idc-int-kaia-kairos-ken-full-01,kaia-kairos,Deployed,K8S,192.168.34.45,idc-chain-host-10,61.111.3.60,16.2,48.048,16.2,48.158,16,16,48,48.1,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,17,49,3.1
+idc-svc-kaia-kairos-ken-arch-01,kaia-kairos,Deployed,K8S,192.168.34.47,idc-chain-host-13,61.111.3.63,12.2,64.048,12.2,64.158,12,12,64,64.1,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,13,65,4.9
+idc-svc-kaia-kairos-ken-arch-02,kaia-kairos,Deployed,K8S,192.168.34.48,idc-chain-host-18,61.111.3.68,12.2,64.048,12.2,64.158,12,12,64,64.1,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,13,65,4.9
+idc-svc-kaia-kairos-ken-full-01,kaia-kairos,Deployed,K8S,192.168.34.49,idc-chain-host-12,61.111.3.62,16.2,48.048,16.2,48.158,16,16,48,48.1,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,17,49,3.1
+idc-svc-kaia-kairos-ken-full-02,kaia-kairos,Deployed,K8S,192.168.34.50,idc-chain-host-07,61.111.3.57,16.2,48.048,16.2,48.158,16,16,48,48.1,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,17,49,3.1
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,90,342,24
+*** Kaia Mainnet ***,,,,,,,,,,,Execution Layer,,,,GethExporter,,,,,,,,,,,,,,,,,,,
+idc-int-kaia-mainnet-ken-arch-01,kaia-mainnet,Deployed,K8S,192.168.34.51,idc-chain-host-27,61.111.3.77,16.2,96.048,16.2,96.158,16,16,96,96.1,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,17,97,17
+idc-int-kaia-mainnet-ken-full-01,kaia-mainnet,Deployed,K8S,192.168.34.53,idc-chain-host-19,61.111.3.69,12.2,80.048,12.2,80.158,12,12,80,80.1,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,13,81,4.7
+idc-svc-kaia-mainnet-ken-arch-01,kaia-mainnet,Deployed,K8S,192.168.34.55,idc-chain-host-22,61.111.3.72,16.2,96.048,16.2,96.158,16,16,96,96.1,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,17,97,17
+idc-svc-kaia-mainnet-ken-arch-02,kaia-mainnet,Deployed,K8S,192.168.34.56,idc-chain-host-14,61.111.3.64,16.2,96.048,16.2,96.158,16,16,96,96.1,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,17,97,17
+idc-svc-kaia-mainnet-ken-full-01,kaia-mainnet,Deployed,K8S,192.168.34.57,idc-chain-host-17,61.111.3.67,12.2,80.048,12.2,80.158,12,12,80,80.1,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,13,81,4.7
+idc-svc-kaia-mainnet-ken-full-02,kaia-mainnet,Deployed,K8S,192.168.34.58,idc-chain-host-12,61.111.3.62,12.2,80.048,12.2,80.158,12,12,80,80.1,0.2,0.2,0.048,0.058,,,,,,,,,,,,,,13,81,4.7
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,90,534,65.1
+*** Optimism Mainnet ***,,,,,,,,,,,Execution Layer,,,,Consensus Layer,,,,GethExporter,,,,Legacy Geth,,,,DTL,,,,,,,
+idc-int-op-mainnet-geth-arch-01,op-mainnet,Deployed,K8S,192.168.34.59,idc-chain-host-12,61.111.3.62,26.5,98.548,26.5,308.548,8,8,40,250,2,2,10,10,0.2,0.2,0.048,0.048,16,16,48,48,0.3,0.3,0.5,0.5,,27,99,22.1
+idc-int-op-mainnet-reth-arch-01,op-mainnet,Deployed,K8S,192.168.34.199,idc-chain-host-06,61.111.3.56,10.2,42.048,10.2,210.048,8,8,32,200,2,2,10,10,0.2,0.2,0.048,0.048,,,,,,,,,,11,43,2
+idc-int-op-mainnet-geth-full-01,op-mainnet,Deployed,K8S,192.168.34.61,idc-chain-host-27,61.111.3.77,10.2,42.048,10.2,42.048,8,8,32,32,2,2,10,10,0.2,0.2,0.048,0.048,,,,,,,,,,11,43,1
+idc-svc-op-mainnet-reth-arch-01,op-mainnet,Deployed,K8S,192.168.34.224,idc-chain-host-15,61.111.3.65,10.2,42.048,10.2,210.048,8,8,32,200,2,2,10,10,0.2,0.2,0.048,0.048,,,,,,,,,,11,43,2
+idc-svc-op-mainnet-reth-arch-02,op-mainnet,Deployed,K8S,192.168.34.225,idc-chain-host-25,61.111.3.75,10.2,42.048,10.2,210.048,8,8,32,200,2,2,10,10,0.2,0.2,0.048,0.048,,,,,,,,,,11,43,2
+idc-svc-op-mainnet-geth-full-01,op-mainnet,Deployed,K8S,192.168.34.65,idc-chain-host-11,61.111.3.61,10.2,42.048,10.2,42.048,8,8,32,32,2,2,10,10,0.2,0.2,0.048,0.048,,,,,,,,,,11,43,1
+idc-svc-op-mainnet-geth-full-02,op-mainnet,Deployed,K8S,192.168.34.66,idc-chain-host-26,61.111.3.76,10.2,42.048,10.2,42.048,8,8,32,32,2,2,10,10,0.2,0.2,0.048,0.048,,,,,,,,,,11,43,1
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,93,357,31.1
+*** Optimism Sepolia ***,,,,,,,,,,,Execution Layer,,,,Consensus Layer,,,,GethExporter,,,,,,,,,,,,,,,
+idc-int-op-sepolia-geth-arch-01,op-sepolia,Deployed,K8S,192.168.34.67,idc-chain-host-19,61.111.3.69,10.2,40.048,10.2,40.048,8,8,32,32,2,2,8,8,0.2,0.2,0.048,0.048,,,,,,,,,,11,41,4
+idc-int-op-sepolia-geth-arch-02 (PBSS),op-sepolia,Deployed,K8S,192.168.34.68,idc-chain-host-31,61.111.3.81,10.2,40.048,10.2,40.048,8,8,32,32,2,2,8,8,0.2,0.2,0.048,0.048,,,,,,,,,,11,41,1
+idc-int-op-sepolia-geth-full-01,op-sepolia,Deployed,K8S,192.168.34.69,idc-chain-host-28,61.111.3.78,10.2,24.048,10.2,24.048,8,8,16,16,2,2,8,8,0.2,0.2,0.048,0.048,,,,,,,,,,11,25,0.4
+idc-svc-op-sepolia-geth-arch-01,op-sepolia,Deployed,K8S,192.168.34.71,idc-chain-host-20,61.111.3.70,10.2,40.048,10.2,40.048,8,8,32,32,2,2,8,8,0.2,0.2,0.048,0.048,,,,,,,,,,11,41,4
+idc-svc-op-sepolia-geth-arch-02,op-sepolia,Deployed,K8S,192.168.34.72,idc-chain-host-13,61.111.3.63,10.2,40.048,10.2,40.048,8,8,32,32,2,2,8,8,0.2,0.2,0.048,0.048,,,,,,,,,,11,41,4
+idc-svc-op-sepolia-geth-full-01,op-sepolia,Deployed,K8S,192.168.34.73,idc-chain-host-17,61.111.3.67,10.2,24.048,10.2,24.048,8,8,16,16,2,2,8,8,0.2,0.2,0.048,0.048,,,,,,,,,,11,25,0.4
+idc-svc-op-sepolia-geth-full-02,op-sepolia,Deployed,K8S,192.168.34.74,idc-chain-host-11,61.111.3.61,10.2,24.048,10.2,24.048,8,8,16,16,2,2,8,8,0.2,0.2,0.048,0.048,,,,,,,,,,11,25,0.4
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,77,239,14.2
+*** Pocket Network Mainnet ***,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+idc-ded-pokt-mainnet-pocketd-full-upbit01,pokt-mainnet,Deployed,K8S,192.168.34.182,idc-chain-host-23,61.111.3.73,8,64,8,64,8,8,64,64,,,,,,,,,,,,,,,,,,8,64,0.1
+idc-int-pokt-mainnet-pocketd-full-01,pokt-mainnet,Deployed,K8S,192.168.34.188,idc-chain-host-24,61.111.3.74,8,64,8,64,8,8,64,64,,,,,,,,,,,,,,,,,,8,64,0.1
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,16,128,0.2
+*** Polygon Amoy ***,,,,,,,,,,,Execution Layer,,,,Consensus Layer,,,,GethExporter,,,,,,,,,,,,,,,
+idc-int-pol-amoy-bor-arch-01,pol-amoy,Deployed,K8S,192.168.34.77,idc-chain-host-05,61.111.3.55,8.2,64.048,8.2,96.048,4,4,32,64,4,4,32,32,0.2,0.2,0.048,0.048,,,,,,,,,,9,65,0.4
+idc-int-pol-amoy-bor-full-01,pol-amoy,Deployed,K8S,192.168.34.75,idc-chain-host-12,61.111.3.62,8.2,48.048,8.2,64.048,4,4,16,32,4,4,32,32,0.2,0.2,0.048,0.048,,,,,,,,,,9,49,0.4
+idc-int-pol-amoy-erigon-arch-01,pol-amoy,Deployed,K8S,192.168.34.78,idc-chain-host-17,61.111.3.67,8.2,48.048,8.2,64.048,4,4,16,32,4,4,32,32,0.2,0.2,0.048,0.048,,,,,,,,,,9,49,0.4
+idc-svc-pol-amoy-bor-arch-01,pol-amoy,Deployed,K8S,192.168.34.83,idc-chain-host-06,61.111.3.56,8.2,64.048,8.2,96.048,4,4,32,64,4,4,32,32,0.2,0.2,0.048,0.048,,,,,,,,,,,,
+idc-svc-pol-amoy-bor-arch-02,pol-amoy,Deployed,K8S,192.168.34.84,idc-chain-host-20,61.111.3.70,8.2,64.048,8.2,96.048,4,4,32,64,4,4,32,32,0.2,0.2,0.048,0.048,,,,,,,,,,,,
+idc-svc-pol-amoy-bor-full-01,pol-amoy,Deployed,K8S,192.168.34.81,idc-chain-host-14,61.111.3.64,8.2,48.048,8.2,64.048,4,4,16,32,4,4,32,32,0.2,0.2,0.048,0.048,,,,,,,,,,9,49,0.4
+idc-svc-pol-amoy-bor-full-02,pol-amoy,Deployed,K8S,192.168.34.82,idc-chain-host-29,61.111.3.79,8.2,48.048,8.2,64.048,4,4,16,32,4,4,32,32,0.2,0.2,0.048,0.048,,,,,,,,,,9,49,0.4
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,36,196,1.6
+*** Polygon Mainnet ***,,,,,,,,,,,Execution Layer,,,,Consensus Layer,,,,GethExporter,,,,,,,,,,,,,,,
+idc-int-pol-mainnet-bor-full-01,pol-mainnet,Deployed,K8S,192.168.34.86,idc-chain-host-29,61.111.3.79,17.2,144.048,17.2,248.048,12,12,96,200,5,5,48,48,0.2,0.2,0.048,0.048,,,,,,,,,,18,145,5.6
+idc-int-pol-mainnet-bor-full-02,pol-mainnet,Deployed,K8S,192.168.34.161,idc-chain-host-21,61.111.3.71,17.2,144.048,17.2,248.048,12,12,96,200,5,5,48,48,0.2,0.2,0.048,0.048,,,,,,,,,,18,145,5.6
+idc-int-pol-mainnet-erigon-arch-01,pol-mainnet,Deployed,K8S,192.168.34.145,idc-chain-host-24,61.111.3.74,21.2,112.048,21.2,348.048,16,16,64,300,5,5,48,48,0.2,0.2,0.048,0.048,,,,,,,,,,22,113,7.1
+idc-int-pol-mainnet-erigon-arch-02,pol-mainnet,Deployed,K8S,192.168.34.212,idc-chain-host-20,61.111.3.70,21.2,112.048,21.2,348.048,16,16,64,300,5,5,48,48,0.2,0.2,0.048,0.048,,,,,,,,,,22,113,7.1
+idc-int-pol-mainnet-bor-arch-03 (PBSS),pol-mainnet,Deployed,K8S,192.168.34.176,idc-chain-host-15,61.111.3.65,21.2,112.048,21.2,348.048,16,16,64,300,5,5,48,48,0.2,0.2,0.048,0.048,,,,,,,,,,22,113,1
+idc-svc-pol-mainnet-bor-full-01,pol-mainnet,Deployed,K8S,192.168.34.87,idc-chain-host-26,61.111.3.76,17.2,144.048,17.2,248.048,12,12,96,200,5,5,48,48,0.2,0.2,0.048,0.048,,,,,,,,,,18,145,5.6
+idc-svc-pol-mainnet-bor-full-02,pol-mainnet,Deployed,K8S,192.168.34.88,idc-chain-host-16,61.111.3.66,17.2,144.048,17.2,248.048,12,12,96,200,5,5,48,48,0.2,0.2,0.048,0.048,,,,,,,,,,18,145,5.6
+idc-svc-pol-mainnet-erigon-arch-01,pol-mainnet,Deployed,K8S,192.168.34.213,idc-chain-host-34,61.111.3.84,21.2,112.048,21.2,348.048,16,16,64,300,5,5,48,48,0.2,0.2,0.048,0.048,,,,,,,,,,22,113,7.1
+idc-svc-pol-mainnet-erigon-arch-02,pol-mainnet,Deployed,K8S,192.168.34.214,idc-chain-host-31,61.111.3.81,21.2,112.048,21.2,348.048,16,16,64,300,5,5,48,48,0.2,0.2,0.048,0.048,,,,,,,,,,22,113,7.1
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,182,1145,51.8
+"*** Ripple Mainnet *** (rpc port full: 2459, arch: 20111)",,,,,,,,,,,Execution Layer,,,,RippleExporter,,,,,,,,,,,,,,,,,,,
+idc-ded-xrp-mainnet-rippled-full-upbit01,xrp-mainnet,Deployed,K8S,192.168.34.146,idc-chain-host-23,61.111.3.73,8.2,64.128,8.2,96.138,8,8,64,96,0.2,0.2,0.128,0.138,,,,,,,,,,,,,,9,65,1.4
+idc-int-xrp-mainnet-rippled-arch-01,xrp-mainnet,Deployed,K8S,192.168.34.138,idc-chain-host-16,61.111.3.66,16.2,96.128,16.2,148.138,16,16,96,148,0.2,0.2,0.128,0.138,,,,,,,,,,,,,,17,97,38
+idc-int-xrp-mainnet-rippled-full-01,xrp-mainnet,Deployed,K8S,192.168.34.79,idc-chain-host-07,61.111.3.57,8.2,64.128,8.2,96.138,8,8,64,96,0.2,0.2,0.128,0.138,,,,,,,,,,,,,,9,65,1.4
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,35,227,40.8
+*** Solana Devnet ***,,,,,,,,,,,Execution Layer,,,,,,,,,,,,,,,,,,,,,,,
+idc-int-sol-devnet-agave-full-01,sol-devnet,Deployed,Server,192.168.32.31,idc-chain-host-10,61.111.3.60,8,64,8,64,8,8,64,64,,,,,,,,,,,,,,,,,,8,64,3.3
+idc-svc-sol-devnet-agave-full-01,sol-devnet,Deployed,Server,192.168.32.16,idc-chain-host-05,61.111.3.55,8,64,8,64,8,8,64,64,,,,,,,,,,,,,,,,,,8,64,3.3
+idc-svc-sol-devnet-agave-full-02,sol-devnet,Deployed,Server,192.168.32.49,idc-chain-host-16,61.111.3.66,8,64,8,64,8,8,64,64,,,,,,,,,,,,,,,,,,8,64,3.3
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,24,192,9.9
+*** Solana Testnet ***,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+idc-val-sol-testnet-agave-full-01,sol-testnet,Deployed,Server,192.168.32.77,idc-chain-host-34,61.111.3.84,8,64,8,64,8,8,64,64,,,,,,,,,,,,,,,,,,8,64,0.8
+idc-val-sol-testnet-agave-full-02,sol-testnet,Deployed,Server,192.168.32.74,idc-chain-host-31,61.111.3.81,8,64,8,64,8,8,64,64,,,,,,,,,,,,,,,,,,8,64,0.8
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,16,128,1.6
+*** Solana Mainnet ***,,,,,,,,,,,Execution Layer,,,,SolanaExporter,,,,Faithful Client,,,,Downloader,,,,,,,,,,,
+idc-ded-sol-mainnet-agave-full-dunamu01,sol-mainnet,Deployed,Server,192.168.32.75,idc-chain-host-32,61.111.3.82,95.2,1000.048,95.2,1000.048,95,95,1000,1000,0.2,0.2,0.048,0.048,,,,,,,,,,,,,,96,1001,16
+idc-int-sol-mainnet-agave-full-01,sol-mainnet,Deployed,Server,192.168.32.76,idc-chain-host-33,61.111.3.83,95.2,1000.048,95.2,1000.048,95,95,1000,1000,0.2,0.2,0.048,0.048,,,,,,,,,,,,,,96,1001,16
+idc-svc-sol-mainnet-agave-full-01,sol-mainnet,Deployed,EXT,,cherryservers-sol-01,185.191.117.11,47.2,1150.048,47.2,1150.048,47,47,1150,1150,0.2,0.2,0.048,0.048,,,,,,,,,,,,,,48,1151,10
+idc-svc-sol-mainnet-agave-full-02,sol-mainnet,Deployed,EXT,,cherryservers-sol-02,185.191.117.148,47.2,1150.048,47.2,1150.048,47,47,1150,1150,0.2,0.2,0.048,0.048,,,,,,,,,,,,,,48,1151,10
+idc-ded-sol-mainnet-agave-full-dunamu01-exporter,sol-mainnet,Deployed,Server,,idc-chain-host-32,61.111.3.82,0.2,0.1,0.2,0.1,,,,,0.2,0.2,0.1,0.1,,,,,,,,,,,,,,,,
+idc-int-sol-mainnet-agave-full-01-exporter,sol-mainnet,Deployed,Server,,idc-chain-host-33,61.111.3.83,0.2,0.1,0.2,0.1,,,,,0.2,0.2,0.1,0.1,,,,,,,,,,,,,,,,
+idc-svc-sol-mainnet-agave-full-01-exporter,sol-mainnet,Deployed,Server,,idc-chain-host-34,61.111.3.84,0.2,0.1,0.2,0.1,,,,,0.2,0.2,0.1,0.1,,,,,,,,,,,,,,,,
+idc-svc-sol-mainnet-agave-full-02-exporter,sol-mainnet,Deployed,Server,,idc-chain-host-34,61.111.3.84,0.2,0.1,0.2,0.1,,,,,0.2,0.2,0.1,0.1,,,,,,,,,,,,,,480,6306,84
+idc-ded-sol-mainnet-faithful-full-dunamu01,sol-mainnet,Deployed,Server,192.168.34.19,idc-chain-host-31,61.111.3.81,18,12,18,132,,,,,,,,,16,16,8,128,2,2,4,4,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*** Sui Mainnet ***,,,,,,,,,,,Execution Layer,,,,,,,,,,,,,,,,,,,,,,,
+idc-ded-sui-mainnet-sui-full-upbit01,sui-mainnet,Deployed,K8S,192.168.34.90,idc-chain-host-21,61.111.3.71,32,256,32,256,32,32,256,256,,,,,,,,,,,,,,,,,,32,256,9.4
+idc-int-sui-mainnet-sui-full-01,sui-mainnet,Deployed,K8S,192.168.34.85,idc-chain-host-23,61.111.3.73,16,128,16,128,16,16,128,128,,,,,,,,,,,,,,,,,,16,128,9.4
+idc-svc-sui-mainnet-sui-full-01,sui-mainnet,Deployed,K8S,192.168.34.94,idc-chain-host-22,61.111.3.72,16,128,16,128,16,16,128,128,,,,,,,,,,,,,,,,,,16,128,9.4
+idc-svc-sui-mainnet-sui-full-02,sui-mainnet,Deployed,K8S,192.168.34.122,idc-chain-host-24,61.111.3.74,16,128,16,128,16,16,128,128,,,,,,,,,,,,,,,,,,16,128,9.4
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,80,640,37.6
+*** Tron Mainnet ***,,,,,,,,,,,Execution Layer,,,,,,,,,,,,,,,,,,,,,,,
+idc-int-trx-mainnet-tron-full-01,trx-mainnet,Deployed,K8S,192.168.34.91,idc-chain-host-26,61.111.3.76,12,64,12,64.1,12,12,64,64.1,,,,,,,,,,,,,,,,,,12,64,3.7
+idc-int-trx-mainnet-tron-full-02,trx-mainnet,Deployed,K8S,192.168.34.92,idc-chain-host-04,61.111.3.54,12,64,12,64.1,12,12,64,64.1,,,,,,,,,,,,,,,,,,12,64,3.7
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,24,128,7.4
+*** Thundercore Mainnet ***,,,,,,,,,,,Execution Layer,,,,GethExporter,,,,,,,,,,,,,,,,,,,
+idc-ded-tt-mainnet-thunder-full-upbit01,tt-mainnet,Deployed,K8S,192.168.34.121,idc-chain-host-17,61.111.3.67,4.2,32.048,4.2,32.048,4,4,32,32,0.2,0.2,0.048,0.048,,,,,,,,,,,,,,5,33,0.5
+idc-int-tt-mainnet-thunder-full-01,tt-mainnet,Deployed,K8S,192.168.34.118,idc-chain-host-20,61.111.3.70,4.2,32.048,4.2,32.048,4,4,32,32,0.2,0.2,0.048,0.048,,,,,,,,,,,,,,5,33,0.5
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,10,66,1
+*** Vaulta Mainnet ***,,,,,,,,,,,Execution Layer,,,,,,,,,,,,,,,,,,,,,,,
+idc-ded-a-mainnet-nodeos-full-upbit01,a-mainnet,Deployed,K8S,192.168.34.123,idc-chain-host-21,61.111.3.71,8,64,8,64,8,8,64,64,,,,,,,,,,,,,,,,,,8,64,11
+idc-int-a-mainnet-nodeos-full-01,a-mainnet,Deployed,K8S,192.168.34.187,idc-chain-host-22,61.111.3.72,8,64,8,64,8,8,64,64,,,,,,,,,,,,,,,,,,8,64,11
+idc-int-a-mainnet-nodeos-arch-01,a-mainnet,Deployed,K8S,192.168.34.191,idc-chain-host-24,61.111.3.74,8,64,8,64,8,8,64,64,,,,,,,,,,,,,,,,,,8,64,11
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,32,256,44
+*** Zeta Mainnet ***,,,,,,,,,,,Execution Layer,,,,,,,,,,,,,,,,,,,,,,,
+idc-ded-zeta-mainnet-zetacored-full-upbit01,zeta-mainnet,Deployed,K8S,192.168.34.178,idc-chain-host-25,61.111.3.75,8,64,8,64,8,8,64,64,,,,,,,,,,,,,,,,,,8,64,0.3
+idc-int-zeta-mainnet-zetacored-full-01,zeta-mainnet,Deployed,K8S,192.168.34.177,idc-chain-host-19,61.111.3.69,8,64,8,64,8,8,64,64,,,,,,,,,,,,,,,,,,8,64,0.3
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*** Aelf Mainnet ***,,,,,,,,,Execution Layer,,Chain SSDB,,State SSDB,,Exporter,,,,,,,,,,,,,,,,,,,
+idc-ded-aelf-mainnet-aelf-full-upbit05,aelf-mainnet,Deployed,K8S,192.168.66.21,g-idc-chain-host-04,117.52.250.4,7.2,32.048,4,16,2,12,1,4,0.2,0.048,,,,,,,,,,,,,,,,,,
+idc-int-aelf-mainnet-aelf-full-05,aelf-mainnet,Deployed,K8S,192.168.66.22,g-idc-chain-host-05,117.52.250.5,7.2,32.048,4,16,2,12,1,4,0.2,0.048,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*** BTC Mainnet ***,,,,,,,,,Execution Layer,,GethExporter,,,,,,,,,,,,,,,,,,,,,,,
+idc-ded-btc-mainnet-bitcoind-arch-upbit05,btc-mainnet,Deployed,K8S,192.168.66.27,g-idc-chain-host-04,117.52.250.4,2.2,16.048,2,16,0.2,0.048,,,,,,,,,,,,,,,,,,,,,,
+idc-int-btc-mainnet-bitcoind-arch-05,btc-mainnet,Deployed,K8S,192.168.66.28,g-idc-chain-host-05,117.52.250.5,2.2,16.048,2,16,0.2,0.048,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*** Ethereum Mainnet ***,,,,,,,,,Execution Layer,,Consensus Layer,,GethExporter,,,,,,,,,,,,,,,,,,,,,
+idc-ded-eth-mainnet-geth-full-upbit05,eth-mainnet,Deployed,K8S,192.168.66.29,g-idc-chain-host-04,117.52.250.4,16.2,128.048,8,64,8,64,0.2,0.048,,,,,,,,,,,,,,,,,,,,
+idc-int-eth-mainnet-geth-full-05,eth-mainnet,Deployed,K8S,192.168.66.30,g-idc-chain-host-05,117.52.250.5,16.2,128.048,8,64,8,64,0.2,0.048,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*** Filecoin Mainnet ***,,,,,,,,,Execution Layer,,,,,,,,,,,,,,,,,,,,,,,,,
+idc-ded-fil-mainnet-lotus-full-upbit05,fil-mainnet,Deployed,K8S,192.168.66.25,g-idc-chain-host-21,117.52.250.21,48,96,48,96,,,,,,,,,,,,,,,,,,,,,,,,
+idc-int-fil-mainnet-lotus-full-05,fil-mainnet,Deployed,K8S,192.168.66.26,g-idc-chain-host-22,117.52.250.22,48,96,48,96,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*** Flow Mainnet ***,,,,,,,,,Execution Layer,,,,,,,,,,,,,,,,,,,,,,,,,
+idc-ded-flow-mainnet-flow-full-upbit05,flow-mainnet,Deployed,K8S,192.168.66.31,g-idc-chain-host-04,117.52.250.4,24,64,24,64,,,,,,,,,,,,,,,,,,,,,,,,
+idc-int-flow-mainnet-flow-full-05,flow-mainnet,Deployed,K8S,192.168.66.32,g-idc-chain-host-05,117.52.250.5,24,64,24,64,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*** Pocket Network Mainnet ***,,,,,,,,,Execution Layer,,,,,,,,,,,,,,,,,,,,,,,,,
+idc-ded-pokt-mainnet-pocketd-full-upbit05,pokt-mainnet,Deployed,K8S,192.168.66.33,g-idc-chain-host-21,117.52.250.21,8,64,8,64,,,,,,,,,,,,,,,,,,,,,,,,
+idc-int-pokt-mainnet-pocketd-full-05,pokt-mainnet,Deployed,K8S,192.168.66.34,g-idc-chain-host-05,117.52.250.5,8,64,8,64,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*** Ripple Mainnet ***,,,,,,,,,Execution Layer,,GethExporter,,,,,,,,,,,,,,,,,,,,,,,
+idc-ded-xrp-mainnet-rippled-full-upbit05,xrp-mainnet,Deployed,K8S,192.168.66.39,g-idc-chain-host-04,117.52.250.4,8.2,256.5,8,256,0.2,0.5,,,,,,,,,,,,,,,,,,,,,,
+idc-int-xrp-mainnet-rippled-full-05,xrp-mainnet,Deployed,K8S,192.168.66.40,g-idc-chain-host-05,117.52.250.5,8.2,256.5,8,256,0.2,0.5,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*** Solana Mainnet ***,,,,,,,,,Execution Layer,,GethExporter,,,,,,,,,,,,,,,,,,,,,,,
+idc-ded-sol-mainnet-agave-full-05,sol-mainnet,Deployed,Server,192.168.64.41,g-idc-chain-host-41,117.52.250.41,95.2,1000.048,95,1000,0.2,0.048,,,,,,,,,,,,,,,,,,,,,,
+idc-int-sol-mainnet-agave-full-05,sol-mainnet,Deployed,Server,192.168.64.42,g-idc-chain-host-42,117.52.250.42,95.2,1000.048,95,1000,0.2,0.048,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*** Sui Mainnet ***,,,,,,,,,Execution Layer,,,,,,,,,,,,,,,,,,,,,,,,,
+idc-ded-sui-mainnet-sui-full-upbit05,sui-mainnet,Deployed,K8S,192.168.66.35,g-idc-chain-host-21,117.52.250.21,32,256,32,256,,,,,,,,,,,,,,,,,,,,,,,,
+idc-int-sui-mainnet-sui-full-05,sui-mainnet,Deployed,K8S,192.168.66.36,g-idc-chain-host-22,117.52.250.22,32,256,32,256,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*** Thundercore Mainnet ***,,,,,,,,,Execution Layer,,GethExporter,,,,,,,,,,,,,,,,,,,,,,,
+idc-ded-tt-mainnet-thunder-full-upbit05,tt-mainnet,Deployed,K8S,192.168.66.37,g-idc-chain-host-04,117.52.250.4,4.2,32.048,4,32,0.2,0.048,,,,,,,,,,,,,,,,,,,,,,
+idc-int-tt-mainnet-thunder-full-05,tt-mainnet,Deployed,K8S,192.168.66.38,g-idc-chain-host-05,117.52.250.5,4.2,32.048,4,32,0.2,0.048,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*** Vaulta Mainnet ***,,,,,,,,,Execution Layer,,,,,,,,,,,,,,,,,,,,,,,,,
+idc-ded-a-mainnet-nodeos-full-upbit05,a-mainnet,Deployed,K8S,192.168.66.23,g-idc-chain-host-21,117.52.250.21,8,64,8,64,,,,,,,,,,,,,,,,,,,,,,,,
+idc-int-a-mainnet-nodeos-full-05,a-mainnet,Deployed,K8S,192.168.66.24,g-idc-chain-host-23,117.52.250.23,8,64,8,64,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*** Zeta Mainnet ***,,,,,,,,,Execution Layer,,,,,,,,,,,,,,,,,,,,,,,,,
+idc-ded-zeta-mainnet-zetacored-full-upbit05,zeta-mainnet,Deployed,K8S,192.168.66.41,g-idc-chain-host-04,117.52.250.4,8,64,8,64,,,,,,,,,,,,,,,,,,,,,,,,
+idc-int-zeta-mainnet-zetacored-full-05,zeta-mainnet,Deployed,K8S,192.168.66.42,g-idc-chain-host-05,117.52.250.5,8,64,8,64,,,,,,,,,,,,,,,,,,,,,,,,

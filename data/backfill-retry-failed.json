@@ -1,0 +1,63 @@
+[
+  {
+    "protocol": "Ethereum(Lighthouse-CL)",
+    "ok": true,
+    "status": "no_new_rss",
+    "created": 0,
+    "skipped": 2,
+    "recent": 2
+  },
+  {
+    "protocol": "ETC",
+    "ok": true,
+    "status": "no_new_rss",
+    "created": 0,
+    "skipped": 2,
+    "recent": 2
+  },
+  {
+    "protocol": "Filecoin",
+    "ok": true,
+    "status": "no_new_rss",
+    "created": 2,
+    "skipped": 0,
+    "recent": 2
+  },
+  {
+    "protocol": "Neo",
+    "ok": false,
+    "error": "Command failed: wget -qO- --timeout=90 http://localhost:8080/api/client-review?protocol=Neo&backfill=2\nwget: download timed out\n"
+  },
+  {
+    "protocol": "Polygon(Bor-EL)",
+    "ok": true,
+    "status": "no_new_rss",
+    "created": 0,
+    "skipped": 2,
+    "recent": 2
+  },
+  {
+    "protocol": "Solana(Agave)",
+    "ok": true,
+    "status": "no_new_rss",
+    "created": 2,
+    "skipped": 0,
+    "recent": 2
+  },
+  {
+    "protocol": "ZetaChain",
+    "ok": true,
+    "status": "no_new_rss",
+    "created": 0,
+    "skipped": 2,
+    "recent": 2
+  },
+  {
+    "protocol": "Zircuit",
+    "ok": true,
+    "status": "no_new_rss",
+    "created": 2,
+    "skipped": 0,
+    "recent": 2
+  }
+]

@@ -1,0 +1,425 @@
+{
+  "startedAt": "2026-02-22T01:16:42.379Z",
+  "mode": "step",
+  "targetPerProtocol": 2,
+  "totalProtocols": 52,
+  "rows": [
+    {
+      "protocol": "Aelf",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Aptos",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Arbitrum",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Avalanche",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Babylon",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Base",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Bitcoin",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Bitcoin Cash",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "BNB Chain",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Canton",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Chiliz",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Core DAO",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Dogecoin",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "dYdX",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Ethereum(Geth-EL)",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Ethereum(Reth-EL)",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Ethereum(Lighthouse-CL)",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "ETC",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Filecoin",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Flow(Access)",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Flow(Consensus)",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Flow(Execution)",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Giwa",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Initia",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Injective",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "IOTA",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Kaia (Klaytn)",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Linea",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Manta",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Merlin",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Metal",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Neo",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Optimism",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Pocket",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Polygon(Bor-EL)",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Polygon(Erigon-EL)",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Polygon(Heimdall-CL)",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Solana(Agave)",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Solana(Jito)",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Sonic",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Stratis",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Sui",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Tezos",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "ThunderCore",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "TRON",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "VeChain",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "World Chain",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "XDC",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "XRP",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "ZetaChain",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Zilliqa",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "protocol": "Zircuit",
+      "target": 2,
+      "created": 2,
+      "calls": 2,
+      "status": "ok",
+      "errors": []
+    }
+  ],
+  "completedAt": "2026-02-22T01:56:10.713Z"
+}

@@ -1,0 +1,50 @@
+name: hyperpulse
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./deploy/Dockerfile.app
+    container_name: hyperpulse-app
+    restart: unless-stopped
+    working_dir: /app
+    env_file:
+      - .env
+    environment:
+      - PORT=8080
+    volumes:
+      - ./:/app
+
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: hyperpulse-nginx
+    restart: unless-stopped
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./deploy/nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./deploy/letsencrypt:/etc/letsencrypt
+      - ./deploy/certbot-www:/var/www/certbot
+      - ./:/var/www/site:ro
+
+  certbot:
+    image: certbot/certbot:latest
+    container_name: hyperpulse-certbot
+    volumes:
+      - ./deploy/letsencrypt:/etc/letsencrypt
+      - ./deploy/certbot-www:/var/www/certbot
+
+  snapshot-worker:
+    image: node:20-alpine
+    container_name: hyperpulse-snapshot-worker
+    restart: unless-stopped
+    working_dir: /app
+    environment:
+      - SNAPSHOT_INTERVAL_SECONDS=300
+      - SNAPSHOT_BATCH_SIZE=1
+    command: ["node", "scripts/run-rotation-worker.mjs"]
+    volumes:
+      - ./:/app

@@ -1,0 +1,12 @@
+.git
+.sisyphus
+node_modules
+dist
+frontend/node_modules
+deploy
+data/repos
+data/tmp
+data/raw
+*.log
+tmp
+.DS_Store

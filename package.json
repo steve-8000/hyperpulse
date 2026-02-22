@@ -1,0 +1,28 @@
+{
+  "name": "hyperpulse",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build:bundle": "vite build",
+    "build": "vite build && node scripts/publish-frontend.mjs",
+    "preview": "vite preview",
+    "start": "node server.mjs",
+    "snapshot": "node scripts/build-hourly-snapshot.mjs",
+    "rebuild:recent2:step": "node scripts/rebuild-recent2-step.mjs",
+    "db:lambda256": "python3 scripts/build_lambda256_server_db.py",
+    "db:pg:up": "docker compose -f docker-compose.db.yml up -d db",
+    "db:pg:down": "docker compose -f docker-compose.db.yml down",
+    "db:pg:load": "python3 scripts/load_lambda256_postgres.py",
+    "db:pg:psql": "docker compose -f docker-compose.db.yml exec db psql -U ${POSTGRES_USER:-hyperpulse} -d ${POSTGRES_DB:-hyperpulse_ops}"
+  },
+  "dependencies": {
+    "pg": "^8.18.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.4.1",
+    "vite": "^5.4.15"
+  }
+}
