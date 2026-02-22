@@ -135,117 +135,6 @@ function ArgocdSyncStatus({ value }) {
   );
 }
 
-const protocolNetworkPrefixes = {
-  aelf: "aelf-mainnet",
-  aptos: "apt-mainnet",
-  arbitrum: "arb-mainnet",
-  avalanche: "avax-mainnet",
-  base: "base-mainnet",
-  bitcoin: "btc-mainnet",
-  "bitcoin cash": "bch-mainnet",
-  "bnb chain": "bnb-mainnet",
-  chiliz: "chz-mainnet",
-  dogecoin: "doge-mainnet",
-  etc: "etc-mainnet",
-  ethereum: "eth-mainnet",
-  filecoin: "fil-mainnet",
-  flow: "flow-mainnet",
-  giwa: "giwa-sepolia",
-  kaia: "kaia-mainnet",
-  optimism: "op-mainnet",
-  pocket: "pokt-mainnet",
-  polygon: "pol-mainnet",
-  solana: "sol-mainnet",
-  sui: "sui-mainnet",
-  tron: "trx-mainnet",
-  thundercore: "tt-mainnet",
-  xrp: "xrp-mainnet",
-  zetachain: "zeta-mainnet",
-};
-
-function inferNetworkSlug(protocol) {
-  const normalized = String(protocol || "").toLowerCase();
-  for (const [token, network] of Object.entries(protocolNetworkPrefixes)) {
-    if (normalized.includes(token)) return network;
-  }
-  const fallback = normalized.replace(/\([^)]*\)/g, " ").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-  return fallback ? `${fallback}-mainnet` : "unknown-mainnet";
-}
-
-function buildFrontendMockTargets(clients, metadata, refreshedAt = new Date().toISOString()) {
-  const items = clients.map((client, index) => {
-    const meta = metadata.get(client.protocol) || {};
-    const network = inferNetworkSlug(client.protocol);
-    const serverId = snapshotServerOptions[index % snapshotServerOptions.length];
-    const ready = index % 3 !== 0;
-    const desiredImage = meta.dockerTag || meta.version || null;
-    const liveImage = desiredImage && ready ? `ghcr.io/${network}:${desiredImage}` : null;
-    return {
-      protocol: client.protocol,
-      targetVersion: meta.version || "n/a",
-      updatedAt: meta.updatedAt || null,
-      dockerTag: meta.dockerTag || null,
-      dockerStatus: meta.dockerStatus || null,
-      network,
-      serverId,
-      hostName: serverId,
-      environmentType: "prod",
-      deploymentStatus: ready ? "Deployed" : "Pending",
-      argocdApp: `${network}-app`,
-      argocdSyncStatus: ready ? "Synced" : "OutOfSync",
-      argocdHealthStatus: ready ? "Healthy" : "Progressing",
-      desiredImage,
-      liveImage,
-      imageMatch: desiredImage ? ready : null,
-      argocdUpdatedAt: refreshedAt,
-      argocdError: null,
-    };
-  });
-
-  return {
-    status: "ok",
-    generatedAt: refreshedAt,
-    snapshotGeneratedAt: refreshedAt,
-    summary: {
-      protocols: clients.length,
-      matchedProtocols: clients.length,
-      totalTargets: items.length,
-    },
-    items,
-    unmatchedProtocols: [],
-  };
-}
-
-function simulateFrontendServerUpdate(payload, targetKey) {
-  const refreshedAt = new Date().toISOString();
-  const items = (payload?.items || []).map((row) => {
-    if (buildUpdateTargetKey(row) !== targetKey) return row;
-    const desired = row.desiredImage || row.targetVersion || null;
-    return {
-      ...row,
-      deploymentStatus: "Deployed",
-      argocdSyncStatus: "Synced",
-      argocdHealthStatus: "Healthy",
-      liveImage: desired ? `ghcr.io/${row.network}:${desired}` : row.liveImage,
-      imageMatch: desired ? true : row.imageMatch,
-      argocdUpdatedAt: refreshedAt,
-      argocdError: null,
-    };
-  });
-
-  return {
-    ...(payload || {}),
-    generatedAt: refreshedAt,
-    snapshotGeneratedAt: payload?.snapshotGeneratedAt || refreshedAt,
-    items,
-    summary: {
-      protocols: payload?.summary?.protocols || 0,
-      matchedProtocols: payload?.summary?.matchedProtocols || 0,
-      totalTargets: items.length,
-    },
-  };
-}
-
 const HOME_PAGES = [
   { id: "home", plane: "Overview", title: "Main Dashboard", desc: "Live billboard for priority operations" },
   { id: "server-status", plane: "Observability", title: "Server Status", desc: "Node, workload, and storage health overview" },
@@ -458,153 +347,6 @@ function parseReport(markdown) {
   return deduped;
 }
 
-const serverStatusItems = [
-  {
-    idc: "idc-1",
-    region: "ap-northeast-2",
-    uptime: "99.97%",
-    latency: "131 ms",
-    status: "Healthy",
-    servers: 1,
-    chains: 18,
-    nodes: [
-      { chain: "Ethereum", node: "eth-exec-a", client: "Geth v1.14.4", resources: "cpu 8 / mem 32Gi / pvc 2Ti" },
-      { chain: "Aptos", node: "apt-validator-a", client: "Aptos Node v1.12.0", resources: "cpu 6 / mem 24Gi / pvc 1.2Ti" },
-      { chain: "Polygon", node: "polygon-erigon-a", client: "Erigon v2.61.2", resources: "cpu 10 / mem 48Gi / pvc 4Ti" },
-    ],
-  },
-  {
-    idc: "idc-2",
-    region: "us-east-1",
-    uptime: "99.78%",
-    latency: "166 ms",
-    status: "Degraded",
-    servers: 1,
-    chains: 15,
-    nodes: [
-      { chain: "Ethereum", node: "eth-reth-b", client: "Reth v1.0.3", resources: "cpu 8 / mem 32Gi / pvc 2.5Ti" },
-      { chain: "Aptos", node: "apt-fullnode-b", client: "Aptos Node v1.11.2", resources: "cpu 6 / mem 24Gi / pvc 1Ti" },
-      { chain: "Solana", node: "solana-validator-b", client: "Agave v2.1.3", resources: "cpu 16 / mem 64Gi / pvc 3Ti" },
-    ],
-  },
-  {
-    idc: "idc-3",
-    region: "eu-central-1",
-    uptime: "99.52%",
-    latency: "209 ms",
-    status: "Maintenance",
-    servers: 1,
-    chains: 12,
-    nodes: [
-      { chain: "Ethereum", node: "eth-lighthouse-c", client: "Lighthouse v6.0.1", resources: "cpu 6 / mem 20Gi / pvc 1.4Ti" },
-      { chain: "Aptos", node: "apt-indexer-c", client: "Aptos Indexer v0.8.4", resources: "cpu 4 / mem 16Gi / pvc 800Gi" },
-      { chain: "Flow", node: "flow-access-c", client: "Flow Node v0.40.0", resources: "cpu 8 / mem 28Gi / pvc 1.5Ti" },
-    ],
-  },
-];
-
-const alertsLogItems = [
-  {
-    id: "AL-4291",
-    title: "Execution node lag spike",
-    protocol: "op-geth",
-    chain: "Optimism",
-    server: "g-idc-chain-host-05",
-    occurredOn: "2026-02-22",
-    occurredAt: "2026-02-22 17:42",
-    severity: "Critical",
-    state: "Investigating",
-    detectedAt: "5 min ago",
-    impact: "Delayed block propagation for 2 regions",
-  },
-  {
-    id: "AL-4287",
-    title: "RPC rate pressure",
-    protocol: "reth",
-    chain: "Ethereum",
-    server: "idc-chain-host-14",
-    occurredOn: "2026-02-22",
-    occurredAt: "2026-02-22 17:15",
-    severity: "High",
-    state: "Mitigated",
-    detectedAt: "32 min ago",
-    impact: "Rate limits activated for burst traffic",
-  },
-  {
-    id: "AL-4279",
-    title: "Snapshot checksum mismatch",
-    protocol: "nethermind",
-    chain: "Arbitrum",
-    server: "cherryservers-sol-01",
-    occurredOn: "2026-02-21",
-    occurredAt: "2026-02-21 23:08",
-    severity: "Medium",
-    state: "Monitoring",
-    detectedAt: "1 hr ago",
-    impact: "Single snapshot candidate quarantined",
-  },
-  {
-    id: "AL-4268",
-    title: "Indexer queue backlog",
-    protocol: "erigon",
-    chain: "Polygon",
-    server: "g-idc-chain-host-04",
-    occurredOn: "2026-02-20",
-    occurredAt: "2026-02-20 20:36",
-    severity: "Low",
-    state: "Resolved",
-    detectedAt: "2 hrs ago",
-    impact: "Queue normalized after worker rebalance",
-  },
-];
-
-const alertReportTableSeed = [
-  {
-    id: "AR-2026-02-22-D",
-    reportType: "Daily",
-    reportedOn: "2026-02-22",
-    chain: "Ethereum",
-    server: "idc-chain-host-14",
-    incidents: 4,
-    resolvedWithinSla: "92%",
-    status: "Published",
-    owner: "Nora",
-  },
-  {
-    id: "AR-2026-02-21-D",
-    reportType: "Daily",
-    reportedOn: "2026-02-21",
-    chain: "Optimism",
-    server: "g-idc-chain-host-05",
-    incidents: 3,
-    resolvedWithinSla: "89%",
-    status: "Published",
-    owner: "Ethan",
-  },
-  {
-    id: "AR-2026-W08",
-    reportType: "Weekly",
-    reportedOn: "2026-02-22",
-    chain: "Arbitrum",
-    server: "cherryservers-sol-01",
-    incidents: 11,
-    resolvedWithinSla: "87%",
-    status: "Published",
-    owner: "Mina",
-  },
-  {
-    id: "AR-2026-M02",
-    reportType: "Monthly",
-    reportedOn: "2026-02-22",
-    chain: "Polygon",
-    server: "g-idc-chain-host-04",
-    incidents: 29,
-    resolvedWithinSla: "85%",
-    status: "Draft",
-    owner: "Leo",
-  },
-];
-
 const snapshotServerOptions = [
   "idc-chain-cluster-master-01",
   "idc-chain-cluster-master-02",
@@ -678,6 +420,42 @@ const migrationStepBlueprint = [
     detail: "Switch traffic and monitor error, latency, and lag.",
   },
 ];
+
+const chainUpdateAutomationSteps = [
+  { id: "announce", stage: "Preparation", label: "Request deployment approval in prd_전체_deploy" },
+  { id: "verify-image", stage: "Preparation", label: "Verify client version matches Docker image" },
+  { id: "yaml-commit", stage: "Preparation", label: "Update yaml version and commit" },
+  { id: "alert-off", stage: "Execution", label: "Turn ArgoCD alert monitoring off" },
+  { id: "traffic-off", stage: "Execution", label: "Switch traffic Active -> Inactive" },
+  { id: "argocd-sync", stage: "Execution", label: "Review DIFF and run ArgoCD sync" },
+  { id: "verify-health", stage: "Verification", label: "Check Pod logs and latest block sync" },
+  { id: "grafana-delay", stage: "Verification", label: "Confirm Grafana Block Delay Time" },
+  { id: "traffic-on", stage: "Verification", label: "Re-enable traffic and send Slack completion" },
+];
+
+function chainUpdateTier(serverId) {
+  const value = String(serverId || "").toLowerCase();
+  if (value.includes("-int-")) return "internal";
+  if (value.includes("-svc-")) return "service";
+  if (value.includes("-ded-")) return "dedicated";
+  return "other";
+}
+
+const chainUpdateTierRank = {
+  internal: 0,
+  service: 1,
+  dedicated: 2,
+  other: 3,
+};
+
+function sortChainUpdateTargets(targets) {
+  return [...(targets || [])].sort((a, b) => {
+    const ta = chainUpdateTierRank[chainUpdateTier(a.serverId)] ?? 99;
+    const tb = chainUpdateTierRank[chainUpdateTier(b.serverId)] ?? 99;
+    if (ta !== tb) return ta - tb;
+    return String(a.serverId || "").localeCompare(String(b.serverId || ""));
+  });
+}
 
 function migrationStepTone(status) {
   if (status === "completed") return "stable";
@@ -974,24 +752,186 @@ function UpdateTargetTable({ state, protocolSiteMap = new Map(), reportStyle = f
   );
 }
 
-function ChainUpdateTargetDetail({ target, scope, onBack, onRunUpdate }) {
-  const [updating, setUpdating] = useState(false);
+function ChainUpdateTargetDetail({ target, allTargets, scope, onBack, onRunUpdate }) {
+  const [running, setRunning] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
   const [error, setError] = useState("");
+  const [selectedServerKey, setSelectedServerKey] = useState("");
+  const [workflowState, setWorkflowState] = useState({});
+  const [rolloutState, setRolloutState] = useState({
+    status: "draft",
+    currentIndex: 0,
+    servers: {},
+    logs: [],
+  });
 
-  async function handleUpdate() {
-    if (!target || updating) return;
-    setUpdating(true);
+  const protocolTargets = useMemo(() => {
+    if (!target) return [];
+    return sortChainUpdateTargets((allTargets || []).filter((item) => item.protocol === target.protocol));
+  }, [allTargets, target]);
+
+  const selectedTarget = useMemo(
+    () => protocolTargets.find((item) => buildUpdateTargetKey(item) === selectedServerKey) || protocolTargets[0] || null,
+    [protocolTargets, selectedServerKey],
+  );
+
+  const rolloutStorageKey = selectedTarget ? `hyperpulse.chainUpdate.rollout.${selectedTarget.protocol}` : "";
+
+  useEffect(() => {
+    if (!protocolTargets.length) {
+      setSelectedServerKey("");
+      return;
+    }
+    if (!protocolTargets.some((item) => buildUpdateTargetKey(item) === selectedServerKey)) {
+      setSelectedServerKey(buildUpdateTargetKey(protocolTargets[0]));
+    }
+  }, [protocolTargets, selectedServerKey]);
+
+  useEffect(() => {
+    if (!rolloutStorageKey) {
+      setWorkflowState({});
+      setRolloutState({ status: "draft", currentIndex: 0, servers: {}, logs: [] });
+      return;
+    }
+    try {
+      const raw = window.localStorage.getItem(rolloutStorageKey);
+      if (!raw) {
+        setWorkflowState({});
+        setRolloutState({ status: "draft", currentIndex: 0, servers: {}, logs: [] });
+        return;
+      }
+      const parsed = JSON.parse(raw);
+      setWorkflowState(parsed.workflowState || {});
+      setRolloutState(parsed.rolloutState || { status: "draft", currentIndex: 0, servers: {}, logs: [] });
+    } catch {
+      setWorkflowState({});
+      setRolloutState({ status: "draft", currentIndex: 0, servers: {}, logs: [] });
+    }
+  }, [rolloutStorageKey]);
+
+  useEffect(() => {
+    if (!rolloutStorageKey) return;
+    try {
+      window.localStorage.setItem(rolloutStorageKey, JSON.stringify({ workflowState, rolloutState }));
+    } catch {}
+  }, [rolloutStorageKey, workflowState, rolloutState]);
+
+  useEffect(() => {
+    if (!selectedTarget) return;
+    const serverKey = buildUpdateTargetKey(selectedTarget);
+    const hasTargetVersion = !!String(selectedTarget.targetVersion || "").trim();
+    const hasLiveImage = !!String(selectedTarget.liveImage || "").trim();
+    const imageMatched = hasTargetVersion && hasLiveImage
+      ? String(selectedTarget.liveImage).toLowerCase().includes(String(selectedTarget.targetVersion).toLowerCase())
+      : false;
+    const synced = String(selectedTarget.argocdSyncStatus || "").toLowerCase() === "synced";
+    const healthy = String(selectedTarget.argocdHealthStatus || "").toLowerCase() === "healthy";
+    setWorkflowState((prev) => {
+      const next = { ...prev };
+      if (imageMatched) next[`${serverKey}:verify-image`] = true;
+      if (synced) next[`${serverKey}:argocd-sync`] = true;
+      if (synced && healthy) next[`${serverKey}:verify-health`] = true;
+      return next;
+    });
+  }, [selectedTarget]);
+
+  const selectedServerKeyResolved = selectedTarget ? buildUpdateTargetKey(selectedTarget) : "";
+
+  const completedSteps = useMemo(() => {
+    if (!selectedServerKeyResolved) return 0;
+    return chainUpdateAutomationSteps.filter((step) => workflowState[`${selectedServerKeyResolved}:${step.id}`]).length;
+  }, [selectedServerKeyResolved, workflowState]);
+
+  const currentVersion = selectedTarget?.liveImage || "pending";
+  const nextVersion = selectedTarget?.targetVersion || "n/a";
+
+  function markStepPassed(stepId, serverKey = selectedServerKeyResolved) {
+    if (!serverKey) return;
+    setWorkflowState((prev) => ({ ...prev, [`${serverKey}:${stepId}`]: true }));
+  }
+
+  function appendLog(message, level = "info") {
+    const line = `${fmtDate(new Date().toISOString())} · ${message}`;
+    setRolloutState((prev) => ({
+      ...prev,
+      logs: [{ line, level }, ...prev.logs].slice(0, 80),
+    }));
+  }
+
+  function resetRollout() {
+    setWorkflowState({});
+    setRolloutState({ status: "draft", currentIndex: 0, servers: {}, logs: [] });
+    setStatusMessage("");
+    setError("");
+  }
+
+  async function executeServerUpdate(serverTarget, indexInPlan) {
+    const serverKey = buildUpdateTargetKey(serverTarget);
+    setRolloutState((prev) => ({
+      ...prev,
+      status: "running",
+      currentIndex: indexInPlan,
+      servers: {
+        ...prev.servers,
+        [serverKey]: { ...(prev.servers[serverKey] || {}), status: "updating" },
+      },
+    }));
+
+    markStepPassed("announce", serverKey);
+    markStepPassed("verify-image", serverKey);
+    markStepPassed("yaml-commit", serverKey);
+    markStepPassed("alert-off", serverKey);
+    markStepPassed("traffic-off", serverKey);
+    appendLog(`[${serverTarget.serverId}] Started update execution`);
+
+    try {
+      const result = await onRunUpdate(serverTarget);
+      markStepPassed("argocd-sync", serverKey);
+      markStepPassed("verify-health", serverKey);
+      markStepPassed("grafana-delay", serverKey);
+      markStepPassed("traffic-on", serverKey);
+      setRolloutState((prev) => ({
+        ...prev,
+        servers: {
+          ...prev.servers,
+          [serverKey]: { ...(prev.servers[serverKey] || {}), status: "done", message: result?.message || "Done" },
+        },
+      }));
+      appendLog(`[${serverTarget.serverId}] Update passed and verification complete`);
+      return true;
+    } catch (runError) {
+      setRolloutState((prev) => ({
+        ...prev,
+        status: "failed",
+        servers: {
+          ...prev.servers,
+          [serverKey]: { ...(prev.servers[serverKey] || {}), status: "failed", message: runError.message || "Failed" },
+        },
+      }));
+      appendLog(`[${serverTarget.serverId}] Update failed: ${runError.message || "Unknown error"}`, "danger");
+      setError(runError.message || "Failed during rollout");
+      return false;
+    }
+  }
+
+  async function runPlannedRollout() {
+    if (!protocolTargets.length || running) return;
+    setRunning(true);
     setError("");
     setStatusMessage("");
-    try {
-      const result = await onRunUpdate(target);
-      setStatusMessage(result?.message || `Update requested for ${target.serverId}.`);
-    } catch (updateError) {
-      setError(updateError.message || "Failed to run update for selected server");
-    } finally {
-      setUpdating(false);
+    appendLog(`Rollout started for ${target.protocol} (${protocolTargets.length} servers)`);
+    for (let i = rolloutState.currentIndex; i < protocolTargets.length; i += 1) {
+      const ok = await executeServerUpdate(protocolTargets[i], i);
+      if (!ok) {
+        setRunning(false);
+        setStatusMessage(`Rollout paused at ${protocolTargets[i].serverId}`);
+        return;
+      }
     }
+    setRolloutState((prev) => ({ ...prev, status: "completed", currentIndex: protocolTargets.length }));
+    setRunning(false);
+    setStatusMessage(`Rollout completed for ${target.protocol}.`);
+    appendLog(`Rollout completed for ${target.protocol}`);
   }
 
   if (!target) {
@@ -1015,9 +955,9 @@ function ChainUpdateTargetDetail({ target, scope, onBack, onRunUpdate }) {
     <section className="detailShell opsDetailShell">
       <div className="detailHeader">
         <button type="button" className="ghostButton" onClick={onBack}>Back to Chain Update</button>
-        <h2>{target.protocol} Target</h2>
+        <h2>{target.protocol} Update Orchestrator</h2>
       </div>
-      <div className="breadcrumbLine">chain-update &gt; {target.protocol} &gt; {target.serverId}</div>
+      <div className="breadcrumbLine">chain-update &gt; {target.protocol} &gt; rollout</div>
 
       <div className="scopeBadgeRow">
         <span className="badge badge-neutral">{scope.environment}</span>
@@ -1027,34 +967,116 @@ function ChainUpdateTargetDetail({ target, scope, onBack, onRunUpdate }) {
         <span className="badge badge-neutral">{scope.timeRange}</span>
       </div>
 
-      <section className="panel">
+      <section className="panel chainUpdateAutomationPanel">
         <div className="panelHead panelHeadSplit">
           <div>
-            <h3>Server-specific Update</h3>
-            <p>Run update only for the selected server target.</p>
+            <h3>Upgrade Summary</h3>
+            <p>Current and target versions with server rollout plan.</p>
           </div>
-          <button type="button" className="widgetActionButton" onClick={handleUpdate} disabled={updating}>
-            {updating ? `Updating ${target.serverId}...` : `Update ${target.serverId}`}
-          </button>
+          <span className={`badge badge-${formatBadgeLabel(rolloutState.status || "draft")}`}>Run {rolloutState.status}</span>
         </div>
+        <div className="chainUpdateVersionDiff">
+          <span className="badge badge-neutral">Current {currentVersion}</span>
+          <span className="badge badge-neutral">Target {nextVersion}</span>
+          <span className="badge badge-neutral">Servers {protocolTargets.length}</span>
+        </div>
+      </section>
 
-        <div className="tableWrap">
+      <section className="panel chainUpdateAutomationPanel">
+        <div className="panelHead panelHeadSplit">
+          <div>
+            <h3>Server Rollout Planner</h3>
+            <p>Execution order follows Internal -&gt; Service -&gt; Dedicated.</p>
+          </div>
+          <div className="chainUpdateAutomationActions">
+            <button type="button" className="widgetActionButton" onClick={runPlannedRollout} disabled={running || !protocolTargets.length}>Run Planned Rollout</button>
+            <button type="button" className="widgetActionButton ghost" onClick={resetRollout} disabled={running}>Reset</button>
+          </div>
+        </div>
+        <div className="tableWrap chainUpdatePlanTableWrap">
           <table className="unifiedTable">
+            <thead>
+              <tr>
+                <th>Order</th>
+                <th>Tier</th>
+                <th>Server</th>
+                <th>Current</th>
+                <th>Target</th>
+                <th>Status</th>
+              </tr>
+            </thead>
             <tbody>
-              <tr><th>Protocol</th><td>{target.protocol}</td></tr>
-              <tr><th>Target Version</th><td>{target.targetVersion || "n/a"}</td></tr>
-              <tr><th>Live Image</th><td>{target.liveImage || "pending"}</td></tr>
-              <tr><th>ArgoCD Sync</th><td><ArgocdSyncStatus value={target.argocdSyncStatus || "pending"} /></td></tr>
-              <tr><th>Network</th><td>{target.network || "-"}</td></tr>
-              <tr><th>Server ID</th><td>{target.serverId || "-"}</td></tr>
-              <tr><th>Host</th><td>{target.hostName || "-"}</td></tr>
+              {protocolTargets.map((item, index) => {
+                const key = buildUpdateTargetKey(item);
+                const state = rolloutState.servers[key]?.status || (index < rolloutState.currentIndex ? "done" : "pending");
+                return (
+                  <tr key={key} className={`clickableRow ${selectedServerKeyResolved === key ? "rowSelected" : ""}`} onClick={() => setSelectedServerKey(key)}>
+                    <td>{index + 1}</td>
+                    <td>{chainUpdateTier(item.serverId)}</td>
+                    <td>{item.serverId}</td>
+                    <td>{item.liveImage || "pending"}</td>
+                    <td>{item.targetVersion || "n/a"}</td>
+                    <td><span className={`badge badge-${formatBadgeLabel(state)}`}>{state}</span></td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
-
-        {statusMessage ? <p className="statusLine">{statusMessage}</p> : null}
-        {error ? <p className="statusLine danger">{error}</p> : null}
       </section>
+
+      <section className="panel chainUpdateAutomationPanel">
+        <div className="panelHead panelHeadSplit">
+          <div>
+            <h3>Step Checklist · {selectedTarget?.serverId || "-"}</h3>
+            <p>Operational checklist with automatic pass on execution results.</p>
+          </div>
+          <span className="badge badge-neutral">Progress {completedSteps}/{chainUpdateAutomationSteps.length}</span>
+        </div>
+        <div className="chainUpdateAutomationChecklist">
+          {chainUpdateAutomationSteps.map((step) => {
+            const passed = !!workflowState[`${selectedServerKeyResolved}:${step.id}`];
+            return (
+              <div key={step.id} className="chainUpdateAutomationStep">
+                <span><strong>{step.stage}</strong> - {step.label}</span>
+                <div className="chainUpdateAutomationActions">
+                  <span className={`badge badge-${passed ? "healthy" : "pending"}`}>{passed ? "Passed" : "Pending"}</span>
+                  <button
+                    type="button"
+                    className="widgetActionButton ghost"
+                    disabled={passed || running || !selectedServerKeyResolved}
+                    onClick={() => markStepPassed(step.id)}
+                  >
+                    Mark pass
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="panel chainUpdateAutomationPanel">
+        <div className="panelHead">
+          <h3>Execution Timeline</h3>
+        </div>
+        {rolloutState.logs.length ? (
+          <div className="chainUpdateTimeline">
+            {rolloutState.logs.map((entry) => (
+              <p key={entry.line} className={`statusLine ${entry.level === "danger" ? "danger" : ""}`}>{entry.line}</p>
+            ))}
+          </div>
+        ) : (
+          <p className="statusLine">No execution logs yet.</p>
+        )}
+        <div className="chainUpdateAutomationSlack">
+          <p className="widgetMeta">Slack start template: alert off & 하이퍼 노드 비활성화 & 업데이트 진행합니다.</p>
+          <p className="widgetMeta">Slack end template: 모든 작업 완료되었습니다.</p>
+        </div>
+      </section>
+
+      {statusMessage ? <p className="statusLine">{statusMessage}</p> : null}
+      {error ? <p className="statusLine danger">{error}</p> : null}
     </section>
   );
 }
@@ -1415,14 +1437,15 @@ export function App() {
     error: "",
     payload: null,
   });
-  const targetDataMode = "mock";
-  const [mockTargetsPayload, setMockTargetsPayload] = useState({
-    status: "ok",
-    generatedAt: new Date().toISOString(),
-    snapshotGeneratedAt: new Date().toISOString(),
-    summary: { protocols: 0, matchedProtocols: 0, totalTargets: 0 },
+  const [alertsState, setAlertsState] = useState({
+    loading: true,
+    error: "",
     items: [],
-    unmatchedProtocols: [],
+  });
+  const [alertReportsState, setAlertReportsState] = useState({
+    loading: true,
+    error: "",
+    items: [],
   });
   const [statusFilter, setStatusFilter] = useState("all");
   const [regionFilter, setRegionFilter] = useState("all");
@@ -1430,16 +1453,8 @@ export function App() {
   const [alertDateFilter, setAlertDateFilter] = useState("all");
   const [alertServerFilter, setAlertServerFilter] = useState("all");
   const [alertChainFilter, setAlertChainFilter] = useState("all");
-  const [alertReportRecords] = useState(() => {
-    try {
-      const saved = window.localStorage.getItem("hyperpulse.alertReports.records");
-      if (!saved) return alertReportTableSeed;
-      const parsed = JSON.parse(saved);
-      return Array.isArray(parsed) ? parsed : alertReportTableSeed;
-    } catch {
-      return alertReportTableSeed;
-    }
-  });
+  const alertsLogItems = alertsState.items;
+  const alertReportRecords = alertReportsState.items;
   const [reportTypeFilter, setReportTypeFilter] = useState("all");
   const [reportStatusFilter, setReportStatusFilter] = useState("all");
   const [reportDateFilter, setReportDateFilter] = useState("all");
@@ -1464,13 +1479,13 @@ export function App() {
   const [migrationAck, setMigrationAck] = useState(false);
   const [migrationJob, setMigrationJob] = useState(null);
   const [migrationTimeline, setMigrationTimeline] = useState([]);
-  const statusItems = serverStatusState.payload?.items?.length ? serverStatusState.payload.items : serverStatusItems;
+  const statusItems = serverStatusState.payload?.items || [];
   const protocolSiteMap = useMemo(
     () => new Map(clients.map((client) => [client.protocol, client.officialSite || ""])),
     [clients],
   );
   const healthyServices = statusItems.filter((item) => item.status === "Healthy").length;
-  const activeAlerts = alertsLogItems.filter((item) => item.state !== "Resolved").length;
+  const activeAlerts = alertsLogItems.filter((item) => String(item.state || "").toLowerCase() !== "resolved").length;
   const criticalAlerts = alertsLogItems.filter((item) => item.severity === "Critical").length;
   const totalChains = Number(serverStatusState.payload?.summary?.totalChains || statusItems.reduce((sum, item) => sum + item.chains, 0));
   const statusFilterOptions = useMemo(
@@ -1504,15 +1519,15 @@ export function App() {
     : (availableSubpages[0]?.id || "");
   const alertDateOptions = useMemo(
     () => ["all", ...Array.from(new Set(alertsLogItems.map((item) => item.occurredOn).filter(Boolean))).sort((a, b) => b.localeCompare(a))],
-    [],
+    [alertsLogItems],
   );
   const alertServerOptions = useMemo(
     () => ["all", ...Array.from(new Set(alertsLogItems.map((item) => item.server).filter(Boolean))).sort((a, b) => a.localeCompare(b))],
-    [],
+    [alertsLogItems],
   );
   const alertChainOptions = useMemo(
     () => ["all", ...Array.from(new Set(alertsLogItems.map((item) => item.chain).filter(Boolean))).sort((a, b) => a.localeCompare(b))],
-    [],
+    [alertsLogItems],
   );
   const filteredAlerts = useMemo(
     () => alertsLogItems
@@ -1522,7 +1537,7 @@ export function App() {
         const chainOk = alertChainFilter === "all" || item.chain === alertChainFilter;
         return dateOk && serverOk && chainOk;
       }),
-    [alertChainFilter, alertDateFilter, alertServerFilter],
+    [alertChainFilter, alertDateFilter, alertServerFilter, alertsLogItems],
   );
   const sortedAlerts = useMemo(
     () => sortRowsByConfig(filteredAlerts, alertsTableSort, (row, key) => {
@@ -1533,9 +1548,7 @@ export function App() {
   );
   const filteredOpenAlerts = filteredAlerts.filter((item) => item.state !== "Resolved").length;
   const filteredCriticalAlerts = filteredAlerts.filter((item) => item.severity === "Critical").length;
-  const effectiveUpdateTargetsState = targetDataMode === "mock"
-    ? { loading: false, error: "", payload: mockTargetsPayload }
-    : updateTargetsState;
+  const effectiveUpdateTargetsState = updateTargetsState;
   const reportTypeOptions = useMemo(
     () => ["all", ...Array.from(new Set(alertReportRecords.map((item) => item.reportType).filter(Boolean)))],
     [alertReportRecords],
@@ -1656,7 +1669,6 @@ export function App() {
   };
 
   async function loadUpdateTargets(keepPayload = false) {
-    if (targetDataMode !== "api") return;
     setUpdateTargetsState((prev) => ({
       loading: true,
       error: "",
@@ -1677,12 +1689,6 @@ export function App() {
   async function runUpdateForTarget(target) {
     if (!target) {
       throw new Error("No update target selected");
-    }
-
-    if (targetDataMode === "mock") {
-      const targetKey = buildUpdateTargetKey(target);
-      setMockTargetsPayload((prev) => simulateFrontendServerUpdate(prev, targetKey));
-      return { message: `Update completed for ${target.serverId} (mock).` };
     }
 
     const response = await fetch("./api/chain-update-targets/update", {
@@ -1850,10 +1856,6 @@ export function App() {
   }, [mobileNavOpen]);
 
   useEffect(() => {
-    window.localStorage.setItem("hyperpulse.alertReports.records", JSON.stringify(alertReportRecords));
-  }, [alertReportRecords]);
-
-  useEffect(() => {
     let cancelled = false;
     async function load() {
       setLoading(true);
@@ -1912,11 +1914,6 @@ export function App() {
   }, []);
 
   useEffect(() => {
-    if (!clients.length) return;
-    setMockTargetsPayload(buildFrontendMockTargets(clients, metadata, snapshotGeneratedAt || new Date().toISOString()));
-  }, [clients, metadata, snapshotGeneratedAt]);
-
-  useEffect(() => {
     let cancelled = false;
     async function loadServerStatus() {
       setServerStatusState({ loading: true, error: "", payload: null });
@@ -1934,6 +1931,69 @@ export function App() {
       }
     }
     loadServerStatus();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+    async function loadAlerts() {
+      setAlertsState({ loading: true, error: "", items: [] });
+      try {
+        const response = await fetch("./api/alerts-log");
+        const payload = await response.json();
+        if (!response.ok) throw new Error(payload.error || "Failed to load alerts log");
+        if (cancelled) return;
+        setAlertsState({ loading: false, error: "", items: Array.isArray(payload.items) ? payload.items : [] });
+      } catch (loadError) {
+        if (cancelled) return;
+        setAlertsState({ loading: false, error: loadError.message || "Failed to load alerts log", items: [] });
+      }
+    }
+    loadAlerts();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+    async function loadAlertReports() {
+      setAlertReportsState({ loading: true, error: "", items: [] });
+      try {
+        const response = await fetch("./api/alerts-reports");
+        const payload = await response.json();
+        if (!response.ok) throw new Error(payload.error || "Failed to load alerts reports");
+        if (cancelled) return;
+        setAlertReportsState({ loading: false, error: "", items: Array.isArray(payload.items) ? payload.items : [] });
+      } catch (loadError) {
+        if (cancelled) return;
+        setAlertReportsState({ loading: false, error: loadError.message || "Failed to load alerts reports", items: [] });
+      }
+    }
+    loadAlertReports();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+    async function loadTargets() {
+      try {
+        setUpdateTargetsState({ loading: true, error: "", payload: null });
+        const response = await fetch("./api/chain-update-targets");
+        const payload = await response.json();
+        if (!response.ok) throw new Error(payload.error || "Failed to load update targets");
+        if (cancelled) return;
+        setUpdateTargetsState({ loading: false, error: "", payload });
+      } catch (loadError) {
+        if (cancelled) return;
+        setUpdateTargetsState({ loading: false, error: loadError.message || "Failed to load update targets", payload: null });
+      }
+    }
+    loadTargets();
     return () => {
       cancelled = true;
     };
@@ -3220,6 +3280,7 @@ export function App() {
         ) : route.type === "chain-update-target-detail" ? (
           <ChainUpdateTargetDetail
             target={effectiveUpdateTargetsState.payload?.items?.find((item) => buildUpdateTargetKey(item) === route.targetKey) || null}
+            allTargets={effectiveUpdateTargetsState.payload?.items || []}
             scope={globalScope}
             onBack={() => setPageRoute("chain-update", globalScope)}
             onRunUpdate={runUpdateForTarget}

@@ -1963,6 +1963,99 @@ h1 {
   margin-top: 0.5rem;
 }
 
+.chainUpdateAutomationPanel {
+  margin-bottom: var(--space-4);
+}
+
+.chainUpdateAutomationTopbar {
+  margin-top: 0.62rem;
+  display: grid;
+  gap: 0.62rem;
+}
+
+.chainUpdateAutomationTopbar label {
+  display: grid;
+  gap: 0.34rem;
+  max-width: 22rem;
+}
+
+.chainUpdateAutomationTopbar label span {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+}
+
+.chainUpdateAutomationTopbar select {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-sm);
+  background: var(--surface-0);
+  color: var(--ink-strong);
+  font: inherit;
+  font-size: 0.86rem;
+  padding: 0.52rem 0.6rem;
+}
+
+.chainUpdateAutomationScope {
+  margin-top: 0.62rem;
+}
+
+.chainUpdateVersionDiff {
+  margin-top: 0.62rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.46rem;
+}
+
+.chainUpdateAutomationChecklist {
+  margin-top: 0.72rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.chainUpdateAutomationStep {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.52rem;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-sm);
+  background: var(--surface-0);
+  padding: 0.56rem 0.62rem;
+}
+
+.chainUpdateAutomationStep input {
+  margin-top: 0.08rem;
+}
+
+.chainUpdateAutomationActions {
+  margin-top: 0.78rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.chainUpdateAutomationSlack {
+  margin-top: 0.64rem;
+  display: grid;
+  gap: 0.24rem;
+}
+
+.chainUpdatePlanTableWrap {
+  height: 34vh;
+  min-height: 15rem;
+  max-height: 34vh;
+}
+
+.chainUpdateTimeline {
+  margin-top: 0.58rem;
+  display: grid;
+  gap: 0.34rem;
+  max-height: 16rem;
+  overflow: auto;
+}
+
 .compactSearchRow {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -3678,10 +3771,14 @@ h4,
 
 .sideNavItem {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.44rem;
   border: 1px solid transparent;
   border-left: 0;
   border-radius: 0.66rem;
-  padding: 0.58rem 0.68rem;
+  padding: 0.58rem 0.82rem;
   background: transparent;
   color: color-mix(in srgb, var(--ink-base) 86%, var(--ink-soft));
   transition:
@@ -3693,20 +3790,18 @@ h4,
 
 .sideNavItem::before {
   content: "";
-  position: absolute;
-  left: 0.38rem;
-  top: 50%;
+  position: static;
   width: 0.3rem;
   height: 0.3rem;
+  flex: 0 0 auto;
   border-radius: 999px;
   background: color-mix(in srgb, var(--ink-soft) 60%, transparent);
-  transform: translateY(-50%);
 }
 
 .sideNavTitle {
   font-size: 0.82rem;
   font-weight: 650;
-  padding-left: 0.56rem;
+  padding-left: 0.08rem;
 }
 
 .sideNavItem:hover {

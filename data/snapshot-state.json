@@ -1,11 +1,11 @@
 {
-  "cursor": 25,
+  "cursor": 31,
   "batchSize": 1,
   "total": 52,
-  "lastRunAt": "2026-02-22T13:38:22.224Z",
-  "lastWindowStart": 24,
+  "lastRunAt": "2026-02-22T14:08:29.774Z",
+  "lastWindowStart": 30,
   "lastWindowSize": 1,
   "lastProtocols": [
-    "Injective"
+    "Metal"
   ]
 }
