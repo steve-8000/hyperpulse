@@ -137,13 +137,13 @@ function ArgocdSyncStatus({ value }) {
 
 const HOME_PAGES = [
   { id: "home", plane: "Overview", title: "Main Dashboard", desc: "Live billboard for priority operations" },
-  { id: "server-status", plane: "Observability", title: "Server Status", desc: "Node, workload, and storage health overview" },
-  { id: "alerts-log", plane: "Observability", title: "Alerts Log", desc: "Alert stream and AI triage context" },
-  { id: "alerts-reports", plane: "Observability", title: "Alerts Reports", desc: "Daily, weekly, and monthly reliability reports" },
-  { id: "chain-update", plane: "Change", title: "Chain Update", desc: "ArgoCD phased rollout workflow preview" },
-  { id: "chain-migration", plane: "Change", title: "Chain Migration", desc: "DB and chain-data relocation workflow preview" },
-  { id: "chain-snapshot", plane: "Change", title: "Chain Snapshot", desc: "Backup and restore-drill policy workflow preview" },
-  { id: "chain-update-info", plane: "Intelligence", title: "Chain Update Info", desc: "Client catalog and release freshness" },
+  { id: "server-status", plane: "Monitoring", title: "Server Status", desc: "Node, workload, and storage health overview" },
+  { id: "alerts-log", plane: "Monitoring", title: "Alerts Log", desc: "Alert stream and AI triage context" },
+  { id: "alerts-reports", plane: "Monitoring", title: "Alerts Reports", desc: "Daily, weekly, and monthly reliability reports" },
+  { id: "chain-update", plane: "Operating", title: "Chain Update", desc: "ArgoCD phased rollout workflow preview" },
+  { id: "chain-migration", plane: "Operating", title: "Chain Migration", desc: "DB and chain-data relocation workflow preview" },
+  { id: "chain-snapshot", plane: "Operating", title: "Chain Snapshot", desc: "Backup and restore-drill policy workflow preview" },
+  { id: "chain-update-info", plane: "Information", title: "Chain Update Info", desc: "Client catalog and release freshness" },
 ];
 
 const HOME_PAGE_SET = new Set(HOME_PAGES.map((item) => item.id));
@@ -577,7 +577,7 @@ function ProtocolTable({ items, metadata, onOpenDetail }) {
         <table className="unifiedTable">
         <thead>
           <tr>
-            <th><SortHeaderButton label="Protocol" columnKey="protocol" sortConfig={sortConfig} onToggle={(key) => setSortConfig((prev) => nextSortConfig(prev, key))} /></th>
+            <th className="protocolColumn"><SortHeaderButton label="Protocol" columnKey="protocol" sortConfig={sortConfig} onToggle={(key) => setSortConfig((prev) => nextSortConfig(prev, key))} /></th>
             <th><SortHeaderButton label="Version Info" columnKey="version" sortConfig={sortConfig} onToggle={(key) => setSortConfig((prev) => nextSortConfig(prev, key))} /></th>
             <th><SortHeaderButton label="GitHub" columnKey="github" sortConfig={sortConfig} onToggle={(key) => setSortConfig((prev) => nextSortConfig(prev, key))} /></th>
             <th><SortHeaderButton label="Docker" columnKey="docker" sortConfig={sortConfig} onToggle={(key) => setSortConfig((prev) => nextSortConfig(prev, key))} /></th>
@@ -594,7 +594,7 @@ function ProtocolTable({ items, metadata, onOpenDetail }) {
               : `${client.protocol} Docker image`;
             return (
               <tr key={client.id} className="clickableRow" onClick={() => onOpenDetail(client.protocol)}>
-                <td>
+                <td className="protocolColumn">
                   <div className="protocolCell">
                     <ProtocolLogo protocol={client.protocol} officialSite={client.officialSite} />
                     <span className="tablePlainText">{client.protocol}</span>
@@ -736,7 +736,7 @@ function UpdateTargetTable({ state, protocolSiteMap = new Map(), reportStyle = f
         <table className="unifiedTable">
           <thead>
             <tr>
-              <th><SortHeaderButton label="Protocol" columnKey="protocol" sortConfig={sortConfig} onToggle={(key) => setSortConfig((prev) => nextSortConfig(prev, key))} /></th>
+              <th className="protocolColumn"><SortHeaderButton label="Protocol" columnKey="protocol" sortConfig={sortConfig} onToggle={(key) => setSortConfig((prev) => nextSortConfig(prev, key))} /></th>
               <th><SortHeaderButton label="ArgoCD Sync" columnKey="argocdSyncStatus" sortConfig={sortConfig} onToggle={(key) => setSortConfig((prev) => nextSortConfig(prev, key))} /></th>
               <th><SortHeaderButton label="Target Version" columnKey="targetVersion" sortConfig={sortConfig} onToggle={(key) => setSortConfig((prev) => nextSortConfig(prev, key))} /></th>
               <th><SortHeaderButton label="Live Image" columnKey="liveImage" sortConfig={sortConfig} onToggle={(key) => setSortConfig((prev) => nextSortConfig(prev, key))} /></th>
@@ -754,7 +754,7 @@ function UpdateTargetTable({ state, protocolSiteMap = new Map(), reportStyle = f
                   className="clickableRow"
                   onClick={() => onOpenTargetDetail?.(buildUpdateTargetKey(row))}
                 >
-                  <td>
+                  <td className="protocolColumn">
                     <div className="protocolCell">
                       <ProtocolLogo protocol={row.protocol} officialSite={protocolSiteMap.get(row.protocol) || ""} />
                       <span>{row.protocol}</span>
@@ -2444,31 +2444,6 @@ export function App() {
               </tbody>
             </table>
           </div>
-          <ActionButtons
-            onAction={openModal}
-            actions={[
-              {
-                label: "Responder handoff",
-                title: "Responder handoff",
-                summary: "Prepare handoff package for the next on-call rotation.",
-                bullets: [
-                  "Attach active incident IDs with current mitigation state.",
-                  "Include known blast radius and customer impact notes.",
-                  "Confirm owner and fallback contact for each high severity alert.",
-                ],
-              },
-              {
-                label: "Escalation matrix",
-                title: "Escalation matrix",
-                summary: "Escalation contacts based on severity and outage duration.",
-                bullets: [
-                  "Critical alerts: page primary responder immediately.",
-                  "High alerts over 30 minutes: notify platform lead.",
-                  "Include AI summary in every escalation payload.",
-                ],
-              },
-            ]}
-          />
         </section>
       );
     }
@@ -2661,7 +2636,7 @@ export function App() {
                 <table className="unifiedTable">
                   <thead>
                     <tr>
-                      <th><SortHeaderButton label="Chain" columnKey="protocol" sortConfig={migrationTableSort} onToggle={(key) => setMigrationTableSort((prev) => nextSortConfig(prev, key))} /></th>
+                      <th className="protocolColumn"><SortHeaderButton label="Chain" columnKey="protocol" sortConfig={migrationTableSort} onToggle={(key) => setMigrationTableSort((prev) => nextSortConfig(prev, key))} /></th>
                       <th><SortHeaderButton label="Source Server" columnKey="sourceServer" sortConfig={migrationTableSort} onToggle={(key) => setMigrationTableSort((prev) => nextSortConfig(prev, key))} /></th>
                       <th><SortHeaderButton label="Version" columnKey="version" sortConfig={migrationTableSort} onToggle={(key) => setMigrationTableSort((prev) => nextSortConfig(prev, key))} /></th>
                       <th><SortHeaderButton label="Required Storage" columnKey="requiredStorageTb" sortConfig={migrationTableSort} onToggle={(key) => setMigrationTableSort((prev) => nextSortConfig(prev, key, "desc"))} /></th>
@@ -2681,7 +2656,7 @@ export function App() {
                           setMigrationTimeline([]);
                         }}
                       >
-                        <td>
+                        <td className="protocolColumn">
                           <div className="protocolCell">
                             <ProtocolLogo protocol={item.protocol} officialSite={item.officialSite || protocolSiteMap.get(item.protocol) || ""} />
                             <span>{item.protocol}</span>
@@ -2879,7 +2854,7 @@ export function App() {
                       <table className="unifiedTable">
                         <thead>
                             <tr>
-                            <th><SortHeaderButton label="Protocol" columnKey="protocol" sortConfig={snapshotTableSort} onToggle={(key) => setSnapshotTableSort((prev) => nextSortConfig(prev, key))} /></th>
+                            <th className="protocolColumn"><SortHeaderButton label="Protocol" columnKey="protocol" sortConfig={snapshotTableSort} onToggle={(key) => setSnapshotTableSort((prev) => nextSortConfig(prev, key))} /></th>
                             <th><SortHeaderButton label="Capacity" columnKey="snapshotCapacity" sortConfig={snapshotTableSort} onToggle={(key) => setSnapshotTableSort((prev) => nextSortConfig(prev, key, "desc"))} /></th>
                             <th><SortHeaderButton label="Base PVC Created" columnKey="snapshotAt" sortConfig={snapshotTableSort} onToggle={(key) => setSnapshotTableSort((prev) => nextSortConfig(prev, key, "desc"))} /></th>
                             </tr>
@@ -2895,7 +2870,7 @@ export function App() {
                                 setSelectedSnapshotRestoreTarget("");
                               }}
                             >
-                              <td>
+                              <td className="protocolColumn">
                                 <div className="protocolCell">
                                   <ProtocolLogo protocol={item.protocol} officialSite={item.officialSite || protocolSiteMap.get(item.protocol) || ""} />
                                   <span>{item.protocol}</span>
@@ -3365,9 +3340,9 @@ export function App() {
                   </div>
                 </div>
                 <nav id="primary-ops-navigation" className="sideNavItems" aria-label="Operations sections">
-                  {["Overview", "Observability", "Change", "Intelligence"].map((plane) => (
+                  {["Overview", "Monitoring", "Operating", "Information"].map((plane) => (
                     <section key={plane} className="menuGroup">
-                      <p className="menuGroupLabel">{plane} Plane</p>
+                      <p className="menuGroupLabel">{plane}</p>
                       <div className="menuGroupItems">
                         {HOME_PAGES.filter((item) => item.plane === plane).map((item) => (
                           <button

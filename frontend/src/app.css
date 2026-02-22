@@ -2439,13 +2439,21 @@ h1 {
 .tableWrap .unifiedTable th {
   height: var(--table-header-height);
   padding: 0 var(--table-cell-padding-x);
-  text-align: left;
+  text-align: center;
   background: #f6f9fc;
   color: #29475f;
   letter-spacing: 0.03em;
   font-size: 0.86rem;
   font-weight: 500;
   font-style: normal;
+}
+
+.tableWrap .unifiedTable td {
+  text-align: center;
+}
+
+.tableWrap .unifiedTable .protocolColumn {
+  text-align: left;
 }
 
 .tablePlainText {
@@ -2470,6 +2478,10 @@ h1 {
   gap: 0.34rem;
   padding: 0;
   cursor: pointer;
+}
+
+.tableWrap .unifiedTable th:not(.protocolColumn) .tableSortButton {
+  justify-content: center;
 }
 
 .tableSortButton span:last-child {
@@ -2533,17 +2545,6 @@ h1 {
 .tableWrap table .protocolFallback {
   font-weight: 500;
   font-style: normal;
-}
-
-.tableWrap .unifiedTable td:nth-child(2),
-.tableWrap .unifiedTable td:nth-child(3),
-.tableWrap .unifiedTable td:nth-child(4),
-.tableWrap .unifiedTable td:nth-child(5),
-.tableWrap .unifiedTable th:nth-child(2),
-.tableWrap .unifiedTable th:nth-child(3),
-.tableWrap .unifiedTable th:nth-child(4),
-.tableWrap .unifiedTable th:nth-child(5) {
-  text-align: center;
 }
 
 .tableWrap .unifiedTable tbody tr {
