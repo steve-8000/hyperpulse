@@ -772,9 +772,6 @@ function UpdateTargetTable({ state, protocolSiteMap = new Map(), reportStyle = f
       {sortedRows.length > previewRows.length ? (
         <p className="statusLine">Showing first {previewRows.length} rows of {sortedRows.length} filtered targets.</p>
       ) : null}
-      {payload?.unmatchedProtocols?.length ? (
-        <p className="statusLine">Unmatched protocols: {payload.unmatchedProtocols.slice(0, 10).join(", ")}{payload.unmatchedProtocols.length > 10 ? " ..." : ""}</p>
-      ) : null}
     </section>
   );
 }
