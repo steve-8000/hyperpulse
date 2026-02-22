@@ -653,7 +653,34 @@ function UpdateTargetTable({ state, protocolSiteMap = new Map(), reportStyle = f
   const [sortConfig, setSortConfig] = useState({ key: "updatedAt", direction: "desc" });
 
   const payload = state.payload;
-  const rows = payload?.items || [];
+  const rows = useMemo(() => {
+    const items = payload?.items || [];
+    const byProtocol = new Map();
+    for (const item of items) {
+      const key = String(item.protocol || "").trim().toLowerCase();
+      if (!key) continue;
+      const current = byProtocol.get(key);
+      if (!current) {
+        byProtocol.set(key, item);
+        continue;
+      }
+      const score = (row) => {
+        const sync = String(row.argocdSyncStatus || "").toLowerCase();
+        const health = String(row.argocdHealthStatus || "").toLowerCase();
+        let risk = 0;
+        if (sync !== "synced") risk += 4;
+        if (health !== "healthy") risk += 3;
+        if (row.imageMatch === false) risk += 2;
+        return risk;
+      };
+      const currentScore = score(current);
+      const nextScore = score(item);
+      if (nextScore > currentScore) {
+        byProtocol.set(key, item);
+      }
+    }
+    return [...byProtocol.values()];
+  }, [payload]);
   const summary = payload?.summary || { protocols: 0, matchedProtocols: 0, totalTargets: 0 };
   const snapshotStamp = payload?.snapshotGeneratedAt ? fmtDate(payload.snapshotGeneratedAt) : "n/a";
   const query = searchQuery.trim().toLowerCase();
@@ -690,7 +717,7 @@ function UpdateTargetTable({ state, protocolSiteMap = new Map(), reportStyle = f
         </div>
         <div className="widgetActionStack">
           <p>
-            Snapshot {snapshotStamp} · Matched {summary.matchedProtocols}/{summary.protocols} · Targets {summary.totalTargets}
+            Snapshot {snapshotStamp} · Matched {summary.matchedProtocols}/{summary.protocols} · Protocol rows {rows.length} · Targets {summary.totalTargets}
           </p>
         </div>
       </div>
