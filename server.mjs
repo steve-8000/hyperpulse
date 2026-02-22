@@ -6,6 +6,7 @@ import http from "node:http";
 import { fileURLToPath } from "node:url";
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
+import crypto from "node:crypto";
 import { Pool } from "pg";
 
 const execFileAsync = promisify(execFile);
@@ -645,63 +646,44 @@ function toDateParts(iso) {
   return { on: `${yyyy}-${mm}-${dd}`, at: `${yyyy}-${mm}-${dd} ${hh}:${mi}` };
 }
 
-function alertSeverityFromTarget(item) {
-  const sync = String(item.argocdSyncStatus || "").toLowerCase();
-  const health = String(item.argocdHealthStatus || "").toLowerCase();
-  if (sync !== "synced" && health !== "healthy") return "Critical";
-  if (sync !== "synced") return "High";
-  if (item.imageMatch === false) return "Medium";
-  return "Low";
-}
+const alertsLogSampleItems = [
+  { id: "AL-0001", title: "Execution node lag spike", protocol: "op-geth", chain: "Optimism", server: "g-idc-chain-host-05", occurredAt: "2026-02-22 17:42", severity: "Critical", state: "Investigating", impact: "Delayed block propagation for 2 regions" },
+  { id: "AL-0002", title: "RPC rate pressure", protocol: "reth", chain: "Ethereum", server: "idc-chain-host-14", occurredAt: "2026-02-22 17:15", severity: "High", state: "Mitigated", impact: "Rate limits activated for burst traffic" },
+  { id: "AL-0003", title: "Snapshot checksum mismatch", protocol: "nethermind", chain: "Arbitrum", server: "cherryservers-sol-01", occurredAt: "2026-02-22 16:28", severity: "Medium", state: "Monitoring", impact: "Single snapshot candidate quarantined" },
+  { id: "AL-0004", title: "Indexer queue backlog", protocol: "erigon", chain: "Polygon", server: "g-idc-chain-host-04", occurredAt: "2026-02-22 15:56", severity: "Low", state: "Resolved", impact: "Queue normalized after worker rebalance" },
+  { id: "AL-0005", title: "ArgoCD sync drift", protocol: "aptos-node", chain: "Aptos", server: "idc-chain-host-06", occurredAt: "2026-02-22 15:20", severity: "High", state: "Investigating", impact: "Desired image differs from live deployment" },
+  { id: "AL-0006", title: "Disk IOPS saturation", protocol: "solana-validator", chain: "Solana", server: "idc-chain-host-11", occurredAt: "2026-02-22 14:45", severity: "Critical", state: "Mitigated", impact: "Write latency increased during ledger compaction" },
+  { id: "AL-0007", title: "P2P peer count drop", protocol: "lighthouse", chain: "Ethereum", server: "g-idc-chain-host-08", occurredAt: "2026-02-22 14:02", severity: "Medium", state: "Monitoring", impact: "Peer count recovered after restart" },
+  { id: "AL-0008", title: "Archive sync stall", protocol: "bitcoin-core", chain: "Bitcoin", server: "idc-chain-host-03", occurredAt: "2026-02-22 13:31", severity: "High", state: "Investigating", impact: "Block sync stopped for 18 minutes" },
+  { id: "AL-0009", title: "Memory pressure warning", protocol: "flow-access", chain: "Flow", server: "cherryservers-flow-02", occurredAt: "2026-02-22 12:54", severity: "Low", state: "Resolved", impact: "Temporary pressure cleared by autoscaling" },
+  { id: "AL-0010", title: "Health probe flapping", protocol: "sui-node", chain: "Sui", server: "idc-chain-host-19", occurredAt: "2026-02-22 12:17", severity: "Medium", state: "Monitoring", impact: "Intermittent readiness failures detected" },
+];
 
-function alertStateFromSeverity(severity) {
-  if (severity === "Critical" || severity === "High") return "Investigating";
-  if (severity === "Medium") return "Monitoring";
-  return "Resolved";
-}
-
-function alertTitleFromTarget(item) {
-  const sync = String(item.argocdSyncStatus || "").toLowerCase();
-  const health = String(item.argocdHealthStatus || "").toLowerCase();
-  if (sync !== "synced") return "ArgoCD sync drift";
-  if (health !== "healthy") return "Node health degradation";
-  if (item.imageMatch === false) return "Image mismatch detected";
-  return "Deployment status warning";
-}
+const alertsReportsSampleItems = [
+  { id: "AR-2026-02-22-D-01", reportType: "Daily", reportedOn: "2026-02-22", chain: "Ethereum", server: "idc-chain-host-14", incidents: 4, resolvedWithinSla: "92%", status: "Published", owner: "SRE" },
+  { id: "AR-2026-02-21-D-02", reportType: "Daily", reportedOn: "2026-02-21", chain: "Optimism", server: "g-idc-chain-host-05", incidents: 3, resolvedWithinSla: "89%", status: "Published", owner: "SRE" },
+  { id: "AR-2026-02-20-D-03", reportType: "Daily", reportedOn: "2026-02-20", chain: "Arbitrum", server: "cherryservers-sol-01", incidents: 2, resolvedWithinSla: "94%", status: "Published", owner: "SRE" },
+  { id: "AR-2026-02-19-D-04", reportType: "Daily", reportedOn: "2026-02-19", chain: "Polygon", server: "g-idc-chain-host-04", incidents: 5, resolvedWithinSla: "87%", status: "Published", owner: "SRE" },
+  { id: "AR-2026-02-18-D-05", reportType: "Daily", reportedOn: "2026-02-18", chain: "Aptos", server: "idc-chain-host-06", incidents: 1, resolvedWithinSla: "98%", status: "Stable", owner: "SRE" },
+  { id: "AR-2026-02-17-D-06", reportType: "Daily", reportedOn: "2026-02-17", chain: "Solana", server: "idc-chain-host-11", incidents: 6, resolvedWithinSla: "84%", status: "Published", owner: "SRE" },
+  { id: "AR-2026-02-16-D-07", reportType: "Daily", reportedOn: "2026-02-16", chain: "Bitcoin", server: "idc-chain-host-03", incidents: 2, resolvedWithinSla: "95%", status: "Stable", owner: "SRE" },
+  { id: "AR-2026-W08-08", reportType: "Weekly", reportedOn: "2026-02-22", chain: "Ethereum", server: "g-idc-chain-host-08", incidents: 11, resolvedWithinSla: "88%", status: "Published", owner: "SRE" },
+  { id: "AR-2026-W07-09", reportType: "Weekly", reportedOn: "2026-02-15", chain: "Sui", server: "idc-chain-host-19", incidents: 9, resolvedWithinSla: "90%", status: "Published", owner: "SRE" },
+  { id: "AR-2026-M02-10", reportType: "Monthly", reportedOn: "2026-02-22", chain: "Multi-chain", server: "fleet", incidents: 32, resolvedWithinSla: "86%", status: "Draft", owner: "SRE" },
+];
 
 async function queryAlertsLog() {
-  const targets = await queryChainUpdateTargets();
-  const baseTime = new Date(targets.generatedAt || new Date().toISOString()).getTime();
-  const focus = (targets.items || [])
-    .filter((item) => {
-      const sync = String(item.argocdSyncStatus || "").toLowerCase();
-      const health = String(item.argocdHealthStatus || "").toLowerCase();
-      return sync !== "synced" || health !== "healthy" || item.imageMatch === false;
-    })
-    .slice(0, 120);
-
-  const items = focus.map((item, index) => {
-    const occurredMs = baseTime - index * 1000 * 60 * 7;
-    const occurredIso = item.argocdUpdatedAt || new Date(occurredMs).toISOString();
-    const dateParts = toDateParts(occurredIso);
-    const severity = alertSeverityFromTarget(item);
-    const state = alertStateFromSeverity(severity);
+  const generatedAt = new Date().toISOString();
+  const items = alertsLogSampleItems.map((item) => {
+    const dateParts = toDateParts(item.occurredAt);
     return {
-      id: `AL-${String(index + 1).padStart(4, "0")}`,
-      title: alertTitleFromTarget(item),
-      protocol: item.protocol,
-      chain: item.protocol,
-      server: item.serverId,
+      ...item,
       occurredOn: dateParts.on,
       occurredAt: dateParts.at,
-      severity,
-      state,
-      impact: `${item.serverId} · ${item.network} · Sync ${item.argocdSyncStatus || "unknown"} · Health ${item.argocdHealthStatus || "unknown"}`,
     };
   });
-
   return {
-    generatedAt: targets.generatedAt,
+    generatedAt,
     summary: {
       total: items.length,
       critical: items.filter((item) => item.severity === "Critical").length,
@@ -712,47 +694,13 @@ async function queryAlertsLog() {
 }
 
 async function queryAlertsReports() {
-  const alerts = await queryAlertsLog();
-  const byDate = new Map();
-  for (const item of alerts.items) {
-    const key = item.occurredOn || "n/a";
-    const current = byDate.get(key) || {
-      id: `AR-${key}`,
-      reportType: "Daily",
-      reportedOn: key,
-      chain: item.chain || "-",
-      server: item.server || "-",
-      incidents: 0,
-      critical: 0,
-    };
-    current.incidents += 1;
-    if (item.severity === "Critical") current.critical += 1;
-    byDate.set(key, current);
-  }
-
-  const items = [...byDate.values()]
-    .sort((a, b) => String(b.reportedOn).localeCompare(String(a.reportedOn)))
-    .slice(0, 30)
-    .map((item, index) => {
-      const resolvedWithinSla = Math.max(70, 96 - item.critical * 6 - Math.max(0, item.incidents - 3));
-      return {
-        id: `${item.id}-${String(index + 1).padStart(2, "0")}`,
-        reportType: item.reportType,
-        reportedOn: item.reportedOn,
-        chain: item.chain,
-        server: item.server,
-        incidents: item.incidents,
-        resolvedWithinSla: `${resolvedWithinSla}%`,
-        status: item.critical > 0 ? "Published" : "Stable",
-        owner: "SRE",
-      };
-    });
-
+  const generatedAt = new Date().toISOString();
+  const items = alertsReportsSampleItems.slice(0, 10);
   return {
-    generatedAt: alerts.generatedAt,
+    generatedAt,
     summary: {
       totalReports: items.length,
-      totalIncidents: items.reduce((sum, item) => sum + item.incidents, 0),
+      totalIncidents: items.reduce((sum, item) => sum + Number(item.incidents || 0), 0),
     },
     items,
   };
@@ -761,6 +709,133 @@ async function queryAlertsReports() {
 function json(res, status, payload) {
   res.writeHead(status, { "content-type": "application/json; charset=utf-8" });
   res.end(`${JSON.stringify(payload, null, 2)}\n`);
+}
+
+const ACCESS_USERNAME = "lambda";
+const ACCESS_PASSWORD = "lambda1!";
+const SESSION_COOKIE_NAME = "hyperpulse_session";
+const SESSION_MAX_AGE_SECONDS = 60 * 60 * 8;
+const activeSessions = new Map();
+
+function parseCookies(req) {
+  const out = {};
+  const raw = String(req.headers.cookie || "");
+  for (const part of raw.split(";")) {
+    const trimmed = part.trim();
+    if (!trimmed) continue;
+    const idx = trimmed.indexOf("=");
+    if (idx < 0) continue;
+    const key = trimmed.slice(0, idx).trim();
+    const value = trimmed.slice(idx + 1).trim();
+    out[key] = value;
+  }
+  return out;
+}
+
+function hasValidSession(req) {
+  const cookies = parseCookies(req);
+  const token = String(cookies[SESSION_COOKIE_NAME] || "");
+  if (!token) return false;
+  const expiresAt = activeSessions.get(token);
+  if (!expiresAt) return false;
+  if (Date.now() > expiresAt) {
+    activeSessions.delete(token);
+    return false;
+  }
+  return true;
+}
+
+function createSessionToken() {
+  const token = crypto.randomBytes(24).toString("hex");
+  activeSessions.set(token, Date.now() + SESSION_MAX_AGE_SECONDS * 1000);
+  return token;
+}
+
+function clearSessionToken(req) {
+  const cookies = parseCookies(req);
+  const token = String(cookies[SESSION_COOKIE_NAME] || "");
+  if (token) activeSessions.delete(token);
+}
+
+function loginPageHtml() {
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hyperpulse Login</title>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: radial-gradient(circle at 20% 20%, #e9f2ff, #f6fbff 40%, #ffffff 80%); }
+    .card { width: min(92vw, 360px); background: #fff; border: 1px solid #d7e3f6; border-radius: 14px; box-shadow: 0 14px 34px rgba(25, 59, 112, 0.12); padding: 22px; }
+    h1 { margin: 0 0 14px; font-size: 20px; color: #12336d; }
+    p { margin: 0 0 16px; color: #48618c; font-size: 14px; }
+    label { display: block; font-size: 13px; color: #1f3f75; margin-bottom: 6px; }
+    input { width: 100%; box-sizing: border-box; border: 1px solid #bdd0ef; border-radius: 10px; padding: 11px 12px; margin-bottom: 12px; font-size: 14px; }
+    input:focus { outline: none; border-color: #4279d3; box-shadow: 0 0 0 3px rgba(66, 121, 211, 0.15); }
+    button { width: 100%; border: 0; border-radius: 10px; padding: 11px 12px; background: #1f5fcc; color: #fff; font-weight: 600; cursor: pointer; }
+    button:disabled { opacity: 0.7; cursor: wait; }
+    .error { min-height: 18px; margin-top: 10px; color: #b42318; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <form class="card" id="login-form">
+    <h1>Hyperpulse Access</h1>
+    <p>Sign in to continue.</p>
+    <label for="username">ID</label>
+    <input id="username" name="username" autocomplete="username" required>
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" autocomplete="current-password" required>
+    <button type="submit" id="submit-btn">Login</button>
+    <div class="error" id="error"></div>
+  </form>
+  <script>
+    const form = document.getElementById('login-form');
+    const errorEl = document.getElementById('error');
+    const button = document.getElementById('submit-btn');
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      errorEl.textContent = '';
+      button.disabled = true;
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      try {
+        const response = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          errorEl.textContent = payload.error || 'Login failed';
+          button.disabled = false;
+          return;
+        }
+        window.location.href = '/';
+      } catch {
+        errorEl.textContent = 'Network error';
+        button.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>`;
+}
+
+function respondLoginPage(res) {
+  const html = loginPageHtml();
+  res.writeHead(200, { "content-type": "text/html; charset=utf-8" });
+  res.end(html);
+}
+
+function setSessionCookie(res, token) {
+  const cookie = `${SESSION_COOKIE_NAME}=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${SESSION_MAX_AGE_SECONDS}`;
+  res.setHeader("set-cookie", cookie);
+}
+
+function clearSessionCookie(res) {
+  const cookie = `${SESSION_COOKIE_NAME}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0`;
+  res.setHeader("set-cookie", cookie);
 }
 
 async function readJsonBody(req) {
@@ -1765,6 +1840,45 @@ async function runReview(protocolName) {
 
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url || "/", `http://${req.headers.host || `localhost:${PORT}`}`);
+
+  if (req.method === "POST" && url.pathname === "/api/auth/login") {
+    try {
+      const body = await readJsonBody(req);
+      const username = String(body.username || "").trim();
+      const password = String(body.password || "");
+      if (username !== ACCESS_USERNAME || password !== ACCESS_PASSWORD) {
+        json(res, 401, { error: "Invalid credentials" });
+        return;
+      }
+      const token = createSessionToken();
+      setSessionCookie(res, token);
+      json(res, 200, { status: "ok" });
+    } catch (error) {
+      json(res, 400, { error: error.message || "Invalid login request" });
+    }
+    return;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/auth/logout") {
+    clearSessionToken(req);
+    clearSessionCookie(res);
+    json(res, 200, { status: "ok" });
+    return;
+  }
+
+  if (req.method === "GET" && url.pathname === "/login") {
+    respondLoginPage(res);
+    return;
+  }
+
+  if (!hasValidSession(req)) {
+    if (url.pathname.startsWith("/api/")) {
+      json(res, 401, { error: "Authentication required" });
+      return;
+    }
+    respondLoginPage(res);
+    return;
+  }
 
   if (req.method === "GET" && url.pathname === "/api/server-status") {
     try {
